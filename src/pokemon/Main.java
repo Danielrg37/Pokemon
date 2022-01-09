@@ -82,9 +82,9 @@ public class Main
     private static void initCombat(){
         showPokemons();
         System.out.println("\nEscoge a tu primer Pokemon: ");
-    int primerPokemon = scanner.nextInt();
+    int primerPokemon = scanner.nextInt() - 1;
     System.out.println("\nEscoge a tu segundo Pokemon: ");
-    int segundoPokemon = scanner.nextInt();
+    int segundoPokemon = scanner.nextInt() - 1;
     Battle.initBattle(pokemons[primerPokemon], pokemons[segundoPokemon]);
     }
 }
