@@ -67,14 +67,14 @@ public class Main
     private static void initPokemonsRandomly(){
         for(int i = 0; i < pokemons.length; i++){
             pokemons[i] = new Pokemon();
-            pokemons[i].setName("pokemon" + i);
+            pokemons[i].setName("pokemon" + (i + 1));
         
         }
     }
     
     private static void showPokemons(){
-    for (int x = 0; x < pokemons.length; x++) {
-        System.out.printf("\n%d. %S", (x + 1), pokemons[x].getName());
+    for (int i = 0; i < pokemons.length; i++) {
+        System.out.printf("\n%d. %S", (i + 1), pokemons[i].getName());
     }
 
     }
@@ -88,5 +88,4 @@ public class Main
     Battle.initBattle(pokemons[primerPokemon], pokemons[segundoPokemon]);
     }
 }
-
 
