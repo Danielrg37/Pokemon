@@ -33,7 +33,6 @@ public class Battle
         System.out.printf("\n%S ha perdido el combate", pokemon1.getName());    
         }
     }
-    
 }
 
 
