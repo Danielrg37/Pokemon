@@ -21,7 +21,7 @@ public class Main
             System.out.println();
             System.out.println("**********************************");
             System.out.println();
-            System.out.println("Elija la opciÃ³n:");
+            System.out.println("Elija la opción:");
             System.out.println("1. Utilizar los pokemon del juego");
             System.out.println("2. Crear los pokemon aleatoriamente");
             System.out.println("3. Salir");
@@ -41,11 +41,11 @@ public class Main
                    initCombat();
                    break;
                 case 3:
-                   System.out.println("Escogiste la opciÃ³n 3 de salir, hasta luego!");
+                   System.out.println("Escogiste la opción 3 de salir, hasta luego!");
                    Salir = true;
                    break;
                 default:
-                   System.out.println("Solo se permiten nÃºmeros entre 1 y 3(OpciÃ³n incorrecta)");
+                   System.out.println("Solo se permiten números entre 1 y 3(Opción incorrecta)");
            }
             
        }
@@ -68,24 +68,25 @@ public class Main
         for(int i = 0; i < pokemons.length; i++){
             pokemons[i] = new Pokemon();
             pokemons[i].setName("pokemon" + i);
-		
+        
         }
     }
     
     private static void showPokemons(){
     for (int x = 0; x < pokemons.length; x++) {
-        System.out.printf("\n%d. %S", (x + 1), pokemons[x].getName());
+        System.out.printf("\n%d. %S", x, pokemons[x].getName());
     }
 
-	}
+    }
     
     private static void initCombat(){
         showPokemons();
         System.out.println("\nEscoge a tu primer Pokemon: ");
-	int primerPokemon = scanner.nextInt() - 1;
-	System.out.println("\nEscoge a tu segundo Pokemon: ");
-	int segundoPokemon = scanner.nextInt() - 1;
-	Battle.initBattle(pokemons[primerPokemon], pokemons[segundoPokemon]);
+    int primerPokemon = scanner.nextInt();
+    System.out.println("\nEscoge a tu segundo Pokemon: ");
+    int segundoPokemon = scanner.nextInt();
+    Battle.initBattle(pokemons[primerPokemon], pokemons[segundoPokemon]);
     }
 }
+
 
