@@ -74,7 +74,7 @@ public class Main
     
     private static void showPokemons(){
     for (int x = 0; x < pokemons.length; x++) {
-        System.out.printf("\n%d. %S", x, pokemons[x].getName());
+        System.out.printf("\n%d. %S", (x + 1), pokemons[x].getName());
     }
 
     }
