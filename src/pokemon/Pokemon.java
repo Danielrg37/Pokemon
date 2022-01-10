@@ -10,7 +10,7 @@ package pokemon;
 public class Pokemon
 {
     // instance variables - replace the example below with your own
-    private int health = 0;
+    private int health;
     private int strength;
     private int speed;
     private String name;
@@ -22,9 +22,9 @@ public class Pokemon
      */
     public Pokemon()
     {
-        health = (int)Math.random() * INITIAL_HEALTH;
-        strength = (int)Math.random() * INITIAL_STRENGTH;
-        speed = (int)Math.random() * INITIAL_SPEED;
+        health=(int)Math.floor(Math.random()* (INITIAL_HEALTH - 0 + 1)) + 0;
+        strength=(int)Math.floor(Math.random()* (INITIAL_STRENGTH - 0 + 1)) + 0;
+        speed=(int)Math.floor(Math.random()* (INITIAL_SPEED - 0 + 1)) + 0;
         name = " ";
     }
     
