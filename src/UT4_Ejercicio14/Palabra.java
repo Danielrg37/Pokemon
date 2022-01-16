@@ -31,5 +31,7 @@ public class Palabra
          return ingles;
     }
     
-    
+    public String toString(){
+        return ingles + "-" + castellano;
+    }
 }

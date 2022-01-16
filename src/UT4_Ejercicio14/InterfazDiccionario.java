@@ -11,7 +11,7 @@ public class InterfazDiccionario
 {
     // instance variables - replace the example below with your own
     private static Scanner sc = new Scanner(System.in);
-
+    Diccionario diccionario = new Diccionario(5);
 public InterfazDiccionario() {
 		int opcion;
 		int posicion;
@@ -30,17 +30,18 @@ public InterfazDiccionario() {
 			opcion = sc.nextInt();
 			
 			if(opcion == 1) {
-        			 
-    			      
+        			
+			    diccionario.insertarPalabra(null);	      
 			}else if(opcion == 2) {
 				posicion = sc.nextInt();
         			Diccionario.obtenerPalabra(posicion);
 				
 			}else if(opcion == 3){
-				
+		            posicion = sc.nextInt();		
+			    Diccionario.traducirPalabra(posicion);
 				
 			}else if(opcion == 4) {
-				
+				diccionario.toString();
 				
 			}else if(opcion == 5){
 				Diccionario.escribirDiccionario();

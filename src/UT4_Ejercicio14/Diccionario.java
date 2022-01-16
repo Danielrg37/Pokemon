@@ -40,8 +40,6 @@ public class Diccionario
           }
           }
     }
-
-    
     
     public static Palabra obtenerPalabra(int posicion)
     {
@@ -54,7 +52,9 @@ public class Diccionario
          return listaPalabras[posicion];
     }
     
-    
+    public static String traducirPalabra(int posicion){
+        return listaPalabras[posicion].getIngles();
+    }
     
     public String toString(){
         StringBuilder resultado = new StringBuilder();
