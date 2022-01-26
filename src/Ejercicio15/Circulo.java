@@ -6,7 +6,7 @@ public class Circulo extends Figura{
 
 	
 public Circulo(int x, int y, int r, int g, int b,  int radio){
-	super(x, y, r, g, b);	
+		
 	this.radio = radio;
 		
 	}
