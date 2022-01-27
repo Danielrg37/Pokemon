@@ -1,17 +1,21 @@
 package Ejercicio15;
 
+import java.awt.Color;
+
 public class Triangulo extends Figura{
+
+
 	private int base;
 	private int altura;
 	private int lado1;
 	private int lado2;
 	
-	public Triangulo(int x, int y, int r, int g, int b, int base, int altura, int lado1, int lado2) {
-		super(x, y, r, g, b);
+	public Triangulo(int x, int y, Color color, int base, int altura, int lado1, int lado2) {
+		super(x, y, color);
 		this.base = base;
-		this.altura = altura;
-		this.lado1 = lado1;
+		this.lado1= lado1;
 		this.lado2 = lado2;
+		this.altura = altura;
 	}
 
 	public double calcularArea() {

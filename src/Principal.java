@@ -1,8 +1,9 @@
-package Figura;
+
 
 public class Principal
 {
 	public static void main(String[] args) {
+	
 		Figura[] figuras = new Figura[10];
 		figuras[0] = new Circulo(new Punto(0,0), 5);
 		figuras[1] = new Cuadrado("amarillo", 4);

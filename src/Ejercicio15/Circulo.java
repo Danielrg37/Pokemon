@@ -1,15 +1,15 @@
 package Ejercicio15;
 
+import java.awt.Color;
 
 public class Circulo extends Figura{
 	private int radio;
 
-	
-public Circulo(int x, int y, int r, int g, int b,  int radio){
-		
-	this.radio = radio;
-		
+	public Circulo(int x, int y, Color color, int radio) {
+		super(x, y, color);
+		this.radio = radio;
 	}
+
 
 
 

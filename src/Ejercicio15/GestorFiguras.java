@@ -2,15 +2,10 @@ package Ejercicio15;
 import java.util.ArrayList;
 
 
-public class GestorFiguras{
+public class GestorFiguras {
 	
-	
+	ArrayList<Figura> figuras = new ArrayList<Figura>();
 
-private ArrayList<Figura> figuras;
-
-public GestorFiguras(){
-	figuras = new ArrayList<Figura>();	
-}
 
 public void addFigura(Figura f) {
 	figuras.add(f);
@@ -26,40 +21,31 @@ public void ListarFiguras() {
 
 
 public Figura mayorArea() {
-	double mayorArea = 0;
-	int posicion = 0;
-	for(int i = 0; i < figuras.size(); i++) {
-		if(figuras.get(i).calcularArea() > mayorArea) {
-			mayorArea =  figuras.get(i).calcularArea();
-			posicion = i;
-		}
-		
-	}
-	}
-		
-	
-
+        Figura mFigura=null;
+        double areaMayor=0.0;
+        for(int i=0; i<figuras.size(); i++){
+            if(figuras.get(i).calcularArea()>areaMayor){
+                areaMayor=figuras.get(i).calcularArea();
+                mFigura=figuras.get(i);
+            }
+        }
+        return mFigura;
+    }
 
 
 public void borrarDeColor(Color color) {
+		
 
-Iterator<Figura> it = figuras.iterator()
-while (it.hasNext())
-{
-Figura f = it.next();
-if (f.getColor().equals(color))
-{
-it.remove();
-	
-}
+
+
+
 
 
 public void borrarIgualesA(Figura f) {
 	
 	
 }
+
 }
-
-
 
 
