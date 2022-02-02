@@ -20,7 +20,7 @@ public class Perro extends Animal {
 
 	@Override
 	public String emitirSonido() {
-		return null;
+		return "Guau";
 	}
 
 
