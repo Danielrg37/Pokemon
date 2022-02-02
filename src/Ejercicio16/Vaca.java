@@ -8,7 +8,7 @@ public class Vaca extends Animal {
 
 	@Override
 	public String emitirSonido() {
-		return "MUUUU";
+		return "MUUUUUUU";
 	}
 
 	@Override
