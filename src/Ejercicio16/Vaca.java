@@ -1,6 +1,5 @@
 package Ejercicio16;
 
-
 public class Vaca extends Animal {
 
 	public Vaca(String dueño, String nombre, int numPatas) {
