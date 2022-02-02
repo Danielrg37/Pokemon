@@ -1,7 +1,6 @@
 package Ejercicio16;
 
 
-
 public class Perro extends Animal {
 	private String lugarfavorito;
 
@@ -35,8 +34,7 @@ public class Perro extends Animal {
 
 	@Override
 	public void RepresentacionAnimal() {
-		System.out.println("Soy el perro" + getNombre() + ",mi dueño es" + this.getDueño()+ "y tengo" + this.getNumPatas() + "patas y mi lugar favorito es:" + this.lugarfavorito);
-		
+		System.out.println("Soy el perro" + getNombre() + ",mi dueño es" + this.getDueño()+ "y tengo" + this.getNumPatas() + "patas y mi lugar favorito es:" + this.lugarfavorito);	
 	}
 
 

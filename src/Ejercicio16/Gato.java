@@ -8,7 +8,7 @@ public class Gato extends Animal {
 
 	public Gato(String nombre,String dueño, int numPatas, String juguetefavorito) {
 		super(nombre, dueño, numPatas);
-		this.setJuguetefavorito(juguetefavorito);
+		this.juguetefavorito = juguetefavorito;
 	}
 
 
