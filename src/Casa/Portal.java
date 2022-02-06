@@ -17,8 +17,8 @@ public class Portal{
 	int opciondireccion; 
 	int direccion;
 
-	public void añadirCasa(int superficie, int precio, int habitaciones, int baños, LocalDate fecha) {
-		casas.add(new Casa(superficie, precio, habitaciones, baños, fecha));
+	public void añadirCasa(int superficie, int precio, int numhabitaciones, int numbanos, LocalDate fecha) {
+		casas.add(new Casa(superficie, precio, numhabitaciones, numbanos, fecha));
 	}
 	   
 public void menu() {
@@ -124,8 +124,8 @@ public void menu() {
 					@Override
 					public int compare(Casa c1, Casa c2) {
 						int resultado;
-						if(c1.getNumbaños() > c2.getNumbaños()) resultado = 1;
-						if(c1.getNumbaños() < c2.getNumbaños()) resultado = -1;
+						if(c1.getNumbanos() > c2.getNumbanos()) resultado = 1;
+						if(c1.getNumbanos() < c2.getNumbanos()) resultado = -1;
 						else resultado = 0;
 						return resultado;
 					}

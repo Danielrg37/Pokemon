@@ -6,15 +6,15 @@ public class Casa{
 	private int superficie;
     private int precio;
     private int numhabitaciones;
-    private int numbaños;
+    private int numbanos;
     private LocalDate fecha;
     
     
-public Casa(int superficie, int precio, int numhabitaciones, int numbaños, LocalDate fecha) {
+public Casa(int superficie, int precio, int numhabitaciones, int numbanos, LocalDate fecha) {
 	this.superficie = superficie;
 	this.precio = precio;
 	this.numhabitaciones = numhabitaciones;
-	this.numbaños = numbaños;
+	this.numbanos = numbanos;
 	this.fecha = fecha;
 }
     
@@ -49,13 +49,13 @@ public Casa(int superficie, int precio, int numhabitaciones, int numbaños, Local
 	}
 
 
-	public int getNumbaños() {
-		return numbaños;
+	public int getNumbanos() {
+		return numbanos;
 	}
 
 
-	public void setNumbaños(int numbaños) {
-		this.numbaños = numbaños;
+	public void setNumbaños(int numbanos) {
+		this.numbanos = numbanos;
 	}
 
 
@@ -75,7 +75,7 @@ public Casa(int superficie, int precio, int numhabitaciones, int numbaños, Local
 		resultado += "\nSuperficie : " + this.superficie;
 		resultado += "\nPrecio : " + this.precio;
 		resultado += "\nHabitaciones : " + this.numhabitaciones;
-		resultado += "\nBaños : " + this.numbaños;
+		resultado += "\nBaños : " + this.numbanos;
 		resultado += "\nFecha publicacion : " + fecha.toString();
 		return resultado;
 	}
