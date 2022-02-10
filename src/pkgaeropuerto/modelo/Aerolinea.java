@@ -1,4 +1,4 @@
-package pkgaeropuerto;
+package pkgaeropuerto.modelo;
 
 
 import java.util.ArrayList;

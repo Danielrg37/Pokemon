@@ -1,15 +1,15 @@
-package pkgaeropuerto;
-import java.util.Collections;
-import java.util.Comparator;
+package pkgaeropuerto.modelo;
 
-public class Vuelo {
+
+
+public class Vuelo implements Comparable<Vuelo>{
 String destino;
-String modelo;
+String avion;
 int numPlazas;
 
-public Vuelo(String destino, String modelo, int numPlazas) {
+public Vuelo(String destino, String avion, int numPlazas) {
 	this.destino = destino;
-	this.modelo = modelo;
+	this.avion = avion;
 	this.numPlazas = numPlazas;
 }
 
@@ -21,12 +21,12 @@ public void setDestino(String destino) {
 	this.destino = destino;
 }
 
-public String getModelo() {
-	return modelo;
+public String getAvion() {
+	return avion;
 }
 
-public void setModelo(String modelo) {
-	this.modelo = modelo;
+public void setAvion(String avion) {
+	this.avion = avion;
 }
 
 public int getNumPlazas() {
@@ -37,17 +37,20 @@ public void setNumPlazas(int numPlazas) {
 	this.numPlazas = numPlazas;
 }
 
-
-Comparator<Vuelo> comparator = new Comparator<>(){
-    public int compare(Vuelo v1, Vuelo v2){
-         return v1.getDestino().compareTo(v2.getDestino());
-    }
-};
-
-
 public String toString() {
-	return "Vuelo [destino=" + destino + ", modelo=" + modelo + ", numPlazas=" + numPlazas + ", comparator="
-			+ comparator + "]";
+	StringBuilder sb = new StringBuilder();
+	sb.append("\n\nVuelo " + this.getClass());
+	sb.append("\n---------------------");
+	sb.append("\n\nDestino: " + this.destino);
+	sb.append("\nAvion: " + this.avion);
+	sb.append("\nPlazas: " + this.numPlazas);
+	
+	return sb.toString();
+}
+
+@Override
+public int compareTo(Vuelo o) {
+	return this.destino.compareTo(o.destino); 
 }
 
 

@@ -1,4 +1,4 @@
-package pkgaeropuerto;
+package pkgaeropuerto.modelo;
 
 import java.util.List;
 import java.util.Scanner;
@@ -82,16 +82,20 @@ public class Aeropuerto {
 	 * @return aerolina Aerolina del avion charter con más capacidad
 	 */
 	public List<Vuelo> plazasLibres() {
-		List<Vuelo> tmp = null;
-		List<Regular> regular = new ArrayList<Regular>();
-		 for(Aerolinea x : Aerolines) {
-			 if(x.getNombre().equals(aerolinea)) {
-				tmp = x.getListaVuelos();
-			 }
-		for(Vuelo v : tmp) {
-			if(v instanceof Regular) regular.add((Regular)v);
-		}
+		List<Vuelo> PlazasLib = new ArrayList<Vuelo>();
+		for (Aerolinea a : Aerolines) {
+			List<Vuelo> v = a.getListaVuelos();
+			for(Vuelo x : v) {
+				if(v instanceof Regular) { 
+					if(((Regular)x).getPlazasLibres() > 0) 
+					PlazasLib.add(x);
+				}
+			}
+	}
+		return PlazasLib;
+	}
 
+		
 	/**
 	 * Muestra el numero de vuelos de cada aerolinea que llegan al destino pasado
 	 * por parametro, ver resultados de ejecucion
@@ -118,11 +122,10 @@ public class Aeropuerto {
 	 * @return numero de vuelos borrados
 	 */
 	public int borrarVuelosEmpresa(String nifEmpresa) {
-		int numeroBorrados = 0;
-		 for(Aerolinea x : Aerolines) {
-			 
-	}
-		return numeroBorrados;
+		List<Vuelo> vuelos = new ArrayList<Vuelo>();
+		For(Aerolinea x : Aerolines) {
+			if(x)
+		}
 
 	}
 
@@ -132,7 +135,9 @@ public class Aeropuerto {
 	 * @param listaVuelos
 	 */
 	public void imprimirListaVuelos(List<Vuelo> listaVuelos) {
-		
+		for(Vuelo i : listaVuelos) {
+			System.out.println(i.toString());
+		}
 	}
 
 	/**

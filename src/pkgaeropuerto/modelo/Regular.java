@@ -1,11 +1,12 @@
-package pkgaeropuerto;
+package pkgaeropuerto.modelo;
 
 
 public abstract class Regular extends Vuelo {
 	int plazasLibres;
-	public Regular(String destino, String modelo, int numPlazas, int plazasLibres) {
+	
+	public Regular(String destino, String modelo, int numPlazas) {
 		super(destino, modelo, numPlazas);
-		this.plazasLibres = plazasLibres;
+	
 	}
 	public int getPlazasLibres() {
 		return plazasLibres;
@@ -13,9 +14,18 @@ public abstract class Regular extends Vuelo {
 	public void setPlazasLibres(int plazasLibres) {
 		this.plazasLibres = plazasLibres;
 	}
+	
+	
+	
 	@Override
 	public String toString() {
-		return super.toString();
+		StringBuilder sb = new StringBuilder();
+		sb.append("\n\nVuelo " + this.getClass());
+		sb.append("\n---------------------");
+		sb.append("\n\nDestino: " + this.destino);
+		sb.append("\nAvion: " + this.avion);
+		sb.append("\nPlazas: " + this.numPlazas);
+		sb.append("\nPlazas libres: " + this.plazasLibres); 
+		return sb.toString();
 	}
-	
 }

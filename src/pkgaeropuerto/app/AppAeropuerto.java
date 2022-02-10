@@ -1,6 +1,6 @@
-package app;
+package pkgaeropuerto.app;
 
-import pkgaeropuerto.Aeropuerto;
+import pkgaeropuerto.modelo.Aeropuerto;
 
 public class AppAeropuerto {
 
