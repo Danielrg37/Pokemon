@@ -4,9 +4,10 @@ package pkgaeropuerto.modelo;
 public abstract class Regular extends Vuelo {
 	int plazasLibres;
 	
-	public Regular(String destino, String modelo, int numPlazas) {
-		super(destino, modelo, numPlazas);
 	
+	public Regular(String destino, String avion, int numPlazas) {
+		super(destino, avion, numPlazas);
+		this.numPlazas = numPlazas;
 	}
 	public int getPlazasLibres() {
 		return plazasLibres;
