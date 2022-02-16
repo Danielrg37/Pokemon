@@ -18,7 +18,7 @@ public class AppAeropuerto {
 		aeropuerto.estadisticaDestino("MAD");
 		System.out.println("\nSe han borrado " + aeropuerto.borrarVuelosEmpresa("98735424") + " vuelos");
 		System.out.println("\nOrdenar vuelos precio\n");
-		aeropuerto.imprimirVuelosPorAerolineaOrdenadosPorPrecio("Emirates");
+		aeropuerto.imprimirVuelosPorAerolineaOrdenadosPorPrecio("Vueling");
 	}
 
 }
