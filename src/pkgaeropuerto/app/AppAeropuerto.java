@@ -17,7 +17,7 @@ public class AppAeropuerto {
 		System.out.println("\nEstadistica de vuelos a Madrid\n");
 		aeropuerto.estadisticaDestino("MAD");
 		System.out.println("\nSe han borrado " + aeropuerto.borrarVuelosEmpresa("98735424") + " vuelos");
-		System.out.println("\nOrdenar vuelos precio\n");
+		System.out.println("\nOrdenar vuelos precio- Parte 3\n");
 		aeropuerto.imprimirVuelosPorAerolineaOrdenadosPorPrecio("Vueling");
 	}
 

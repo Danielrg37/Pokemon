@@ -137,7 +137,7 @@ public class Aeropuerto {
 		
 		if(pos >= 0) { // si existe la aerolinea
 			Aerolinea a = this.Aerolines.get(pos); //Aerolinea a = aerolinea del parametro
-			List<Vuelo> precio = new ArrayList<Vuelo>(); //Arraylist para posteriormente colocar
+			List<Vuelo> precio = new ArrayList<Vuelo>(); //Arraylist para posteriormente ordenar
 			for(Vuelo v : a.getVuelos()) {
 					precio.add(v); //Recorre vuelos y añade
 			}
