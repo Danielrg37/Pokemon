@@ -15,6 +15,8 @@ public class Aeropuerto {
 		Aerolines = new ArrayList<Aerolinea>();
 	}
 
+//Parte 3 añadida en Linea 130	
+	
 	/**
 	 * Añade un vuelo a la aerolinea correspondiente solo en el caso de que el vuelo
 	 * no estuviese ya introducido, si la aerolinea no existiese se añade tanto la
@@ -125,20 +127,22 @@ public class Aeropuerto {
 		return Borrados;
 	}
 	
-	
+	//Añadido
 	/**
-	 * Ordenar vuelos por precio
+	 * Método que muestre los vuelos de una aerolínea ordenados por precio de billete ascendentemente (de más barato a más caro)
+	 * 
 	 */
 	public void imprimirVuelosPorAerolineaOrdenadosPorPrecio(String aerolinea) {
-		int pos = this.Aerolines.indexOf(new Aerolinea(aerolinea)); // Le pasas la aerolinea
+		int pos = this.Aerolines.indexOf(new Aerolinea(aerolinea)); // Se le pasa la aerolinea
 		
-		if(pos >= 0) { // si existe
-			Aerolinea a = this.Aerolines.get(pos);
-			List<Vuelo> precio = new ArrayList<Vuelo>();
+		if(pos >= 0) { // si existe la aerolinea
+			Aerolinea a = this.Aerolines.get(pos); //Aerolinea a = aerolinea del parametro
+			List<Vuelo> precio = new ArrayList<Vuelo>(); //Arraylist para posteriormente colocar
 			for(Vuelo v : a.getVuelos()) {
-					precio.add(v);
+					precio.add(v); //Recorre vuelos y añade
 			}
 		
+			//Comparador para ordenar lista e imprimirla o indicar que la aerolinea no existe
 			Collections.sort(precio, new Comparator<Vuelo>() {
 				public int compare(Vuelo v1, Vuelo v2) {
 					return (int) (v1.calcularPrecioFinal() - v2.calcularPrecioFinal());
@@ -150,10 +154,6 @@ public class Aeropuerto {
 		}
 	}
 	
-	/**
-	 * Represetación textual del mapa tal y como se muestra en el enunciado
-	 */
-
 	/**
 	 * Imprime la lista de vuelos pasada por parametro
 	 * 
