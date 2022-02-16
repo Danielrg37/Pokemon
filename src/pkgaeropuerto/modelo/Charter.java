@@ -1,32 +1,49 @@
 package pkgaeropuerto.modelo;
 
 
-public abstract class Charter extends Vuelo {
-	int Nif;
+public class Charter extends Vuelo {
+	private String nif;
 
-
-public Charter(String destino, String modelo, int numPlazas, int Nif) {
-		super(destino, modelo, numPlazas);
-		this.Nif = Nif;
+	
+	public Charter(String destino, String modelo, int numplazas, double precio, String nif) {
+		super(destino, modelo, numplazas, precio);
+		this.nif = nif;
 	}
 
-public int getNIF() {
-	return Nif;
+/**
+ * @return el nif
+ */
+public String getNif() {
+	return nif;
 }
 
-public void setNIF(int Nif) {
-	this.Nif = Nif;
+
+/**
+ * @param nif el nif a establecer
+ */
+public void setNif(String nif) {
+	this.nif = nif;
 }
-	
+
+
 @Override
 public String toString() {
-	StringBuilder sb = new StringBuilder();
-	sb.append("\n\nVuelo " + this.getClass());
-	sb.append("\n---------------------");
-	sb.append("\n\nDestino: " + this.destino);
-	sb.append("\nAvion: " + this.avion);
-	sb.append("\nPlazas: " + this.numPlazas);
-	sb.append("\nNIF Empresa: " + this.Nif);
-	return sb.toString();
+	return "\nVuelo Charter" + super.toString() + "\nNif Empresa: " + nif + "\n";
+}
+
+@Override
+public double calcularPrecioFinal() {
+	if(getNumplazas() < 200) {
+		return getPrecio() * 1.25 + 50;
+	} else {
+		return getPrecio() * 1.25;
+	}
 }
 }
+
+
+
+
+
+
+

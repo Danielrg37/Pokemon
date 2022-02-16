@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 
 public class Aeropuerto {
 
@@ -20,13 +21,22 @@ public class Aeropuerto {
 	 * aerolinea como el vuelo.
 	 */
 	public void addVuelo(String aerolinea, Vuelo vuelo) {
-		 for(Aerolinea x : Aerolines) {
-			 if(x.getNombre().equals(aerolinea)) {
-				 x.addVuelo(vuelo);
-			 
-		 }
+		int pos = this.Aerolines.indexOf(new Aerolinea(aerolinea)); // Dice posicion aerolinea
+		
+		if(pos < 0) { //Aerolinea no existe
+			Aerolinea a = new Aerolinea(aerolinea);
+			List<Vuelo> vuelos = new ArrayList<Vuelo>();
+			vuelos.add(vuelo);
+			a.setVuelos(vuelos);
+			this.Aerolines.add(a);
+		} else {
+			List<Vuelo> vuelos = this.Aerolines.get(pos).getVuelos();
+			if(!vuelos.contains(vuelo)) {
+				vuelos.add(vuelo);
+			}
+			this.Aerolines.get(pos).setVuelos(vuelos);
+		}
 	}
-		 }
 	
 	/**
 	 * Imprime los vuelos por cada aerolinea ordenados por destino, tanto aerolineas
@@ -51,30 +61,7 @@ public class Aeropuerto {
 	 *            Aerolinea de la que se imprimiran los vuelos regulares
 	 */
 	public void regularPorPlazas(String aerolinea) {
-		List<Vuelo> tmp = null;
-		List<Regular> regular = new ArrayList<Regular>();
-		 for(Aerolinea x : Aerolines) {
-			 if(x.getNombre().equals(aerolinea)) {
-				tmp = x.getListaVuelos();
-			 }
-		for(Vuelo v : tmp) {
-			if(v instanceof Regular) regular.add((Regular)v);
-		}
-		 }
-		 Collections.sort(regular,new Comparator<Regular>() {
-
-				public int compare(Regular v1 , Regular v2) {
-					int res;
-					if(v1.getPlazasLibres() > v2.getPlazasLibres()) res = 1;
-					else if(v1.getPlazasLibres() < v2.getPlazasLibres()) res = -1;
-					else res = 0;
-					return res;
-				}
-			});
-			
-			for(Regular r: regular)System.out.println(r.toString());
-		}
-	
+	}
 
 	/**
 	 * Devuelve una lista con vuelos regulares con plazas libres
@@ -84,10 +71,10 @@ public class Aeropuerto {
 	public List<Vuelo> plazasLibres() {
 		List<Vuelo> PlazasLib = new ArrayList<Vuelo>();
 		for (Aerolinea a : Aerolines) {
-			List<Vuelo> v = a.getListaVuelos();
+			List<Vuelo> v = a.getVuelos();
 			for(Vuelo x : v) {
 				if(v instanceof Regular) { 
-					if(((Regular)x).getPlazasLibres() > 0) 
+					if(((Regular)x).getPlazaslibres() > 0) 
 					PlazasLib.add(x);
 				}
 			}
@@ -106,7 +93,7 @@ public class Aeropuerto {
 	public void estadisticaDestino(String destino) {
 		 for(Aerolinea x : Aerolines) {
 			 int numVecesDestino = 0;
-			 List<Vuelo> vuelos = x.getListaVuelos();
+			 List<Vuelo> vuelos = x.getVuelos();
 			 for(Vuelo v : vuelos) {
 				 if(v.getDestino().equals(destino)) 
 			   numVecesDestino++;
@@ -122,12 +109,50 @@ public class Aeropuerto {
 	 * @return numero de vuelos borrados
 	 */
 	public int borrarVuelosEmpresa(String nifEmpresa) {
-		List<Vuelo> vuelos = new ArrayList<Vuelo>();
-		For(Aerolinea x : Aerolines) {
-			if(x)
+		int Borrados = 0;
+		for(Aerolinea i : Aerolines) {
+			List<Vuelo> vuelos = i.getVuelos();
+			Iterator<Vuelo> it = vuelos.iterator();
+			while(it.hasNext()) {
+				Vuelo v = it.next();
+				if(v instanceof Charter && ((Charter) v).getNif().equals(nifEmpresa)) {
+					it.remove();;
+					Borrados++;
+				}
+			}
+			i.setVuelos(vuelos);
 		}
-
+		return Borrados;
 	}
+	
+	
+	/**
+	 * Ordenar vuelos por precio
+	 */
+	public void imprimirVuelosPorAerolineaOrdenadosPorPrecio(String aerolinea) {
+		int pos = this.Aerolines.indexOf(new Aerolinea(aerolinea)); // Le pasas la aerolinea
+		
+		if(pos >= 0) { // si existe
+			Aerolinea a = this.Aerolines.get(pos);
+			List<Vuelo> precio = new ArrayList<Vuelo>();
+			for(Vuelo v : a.getVuelos()) {
+					precio.add(v);
+			}
+		
+			Collections.sort(precio, new Comparator<Vuelo>() {
+				public int compare(Vuelo v1, Vuelo v2) {
+					return (int) (v1.calcularPrecioFinal() - v2.calcularPrecioFinal());
+				}
+			});
+			imprimirListaVuelos(precio);
+		} else {
+			System.out.println("La aerolinea" + aerolinea + "no existe");
+		}
+	}
+	
+	/**
+	 * Represetación textual del mapa tal y como se muestra en el enunciado
+	 */
 
 	/**
 	 * Imprime la lista de vuelos pasada por parametro
@@ -135,17 +160,27 @@ public class Aeropuerto {
 	 * @param listaVuelos
 	 */
 	public void imprimirListaVuelos(List<Vuelo> listaVuelos) {
-		for(Vuelo i : listaVuelos) {
-			System.out.println(i.toString());
+		for(Vuelo v : listaVuelos) {
+			System.out.println(v);
 		}
 	}
+
 
 	/**
 	 * Represetación textual del mapa tal y como se muestra en el enunciado
 	 */
 	public String toString() {
+			StringBuilder sb = new StringBuilder();
+			for(Aerolinea a: this.Aerolines) {
+				sb.append(a);
+			}
+			return sb.toString();
+			
+		}
 
-	}
+	
+	
+	
 
 	/**
 	 * Rellena el mapa haciendo uso de un fichero de texto
@@ -153,7 +188,7 @@ public class Aeropuerto {
 	public void leerFicheroCursos() {
 		Scanner entrada = null;
 		try {
-			entrada = new Scanner(this.getClass().getResourceAsStream("/aviones.txt"));
+			entrada = new Scanner(this.getClass().getResourceAsStream("aviones.txt"));
 			while (entrada.hasNextLine()) {
 				String linea = entrada.nextLine();
 				int pos = linea.indexOf(":");
@@ -162,13 +197,14 @@ public class Aeropuerto {
 				String destino = vuelo[1];
 				String avion = vuelo[2];
 				int plazas = Integer.parseInt(vuelo[3].trim());
+				int plazasLibres = Integer.parseInt(vuelo[4].trim());
+				double precio = Integer.parseInt(vuelo[5].trim());
 				if (vuelo[0].equals("R")) {
-					int plazasLibres = Integer.parseInt(vuelo[4].trim());
-					this.addVuelo(aerolinea, new Regular(destino, avion, plazas, plazasLibres));
+					this.addVuelo(aerolinea, new Regular(destino, avion, plazas, precio, plazasLibres));
 				}
 				else {
 					String nifEmpresa = vuelo[4];
-					this.addVuelo(aerolinea, new (destino, avion, plazas, nifEmpresa));
+					this.addVuelo(aerolinea, new Charter(destino, avion, plazas, precio, nifEmpresa));
 				}
 			}
 
@@ -184,5 +220,4 @@ public class Aeropuerto {
 		}
 
 	}
-
 }

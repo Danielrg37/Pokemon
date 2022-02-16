@@ -1,32 +1,44 @@
 package pkgaeropuerto.modelo;
 
 
-public abstract class Regular extends Vuelo {
-	int plazasLibres;
+public class Regular extends Vuelo {
+	private int plazaslibres;
 	
-	
-	public Regular(String destino, String avion, int numPlazas) {
-		super(destino, avion, numPlazas);
-		this.numPlazas = numPlazas;
+	public Regular(String destino, String modelo, int numplazas, double precio, int plazaslibres) {
+		super(destino, modelo, numplazas, precio);
+		this.plazaslibres = plazaslibres;
 	}
-	public int getPlazasLibres() {
-		return plazasLibres;
+
+
+	/**
+	 * @return el plazaslibres
+	 */
+	public int getPlazaslibres() {
+		return plazaslibres;
 	}
-	public void setPlazasLibres(int plazasLibres) {
-		this.plazasLibres = plazasLibres;
+
+	/**
+	 * @param plazaslibres el plazaslibres a establecer
+	 */
+	public void setPlazaslibres(int plazaslibres) {
+		this.plazaslibres = plazaslibres;
 	}
-	
-	
-	
+
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("\n\nVuelo " + this.getClass());
-		sb.append("\n---------------------");
-		sb.append("\n\nDestino: " + this.destino);
-		sb.append("\nAvion: " + this.avion);
-		sb.append("\nPlazas: " + this.numPlazas);
-		sb.append("\nPlazas libres: " + this.plazasLibres); 
-		return sb.toString();
+		return "\nVuelo Regular" + super.toString() + "\nPlazas Libres: " + plazaslibres;
 	}
+
+@Override
+public int getNumeroPasajeros() {
+	return getNumplazas() - plazaslibres;
 }
+
+@Override
+public double calcularPrecioFinal() {
+	return getPrecio() * 1.1 + 5 * plazaslibres;
+}
+}
+
+
+
