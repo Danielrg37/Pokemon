@@ -25,6 +25,48 @@ public class Kart {
 	
 	
 	public int move() {
-		int movimiento = (int) (speed + acceleration + (Math.random() * ((MAX_RANDOM + 1) - 0) + 0));  
+		int movimiento = (int) (speed + acceleration + (Math.random() * ((MAX_RANDOM + 1) - 0) + 0));
+		return movimiento;  
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Kart [driver=" + driver + ", speed=" + speed + ", acceleration=" + acceleration + ", position="
+				+ position + ", random=" + random + ", MAX_POINTS=" + MAX_POINTS + ", MAX_RANDOM=" + MAX_RANDOM + "]";
+	}
+
+	public String getName() {
+		return driver;
+	}
+
+	public void setName(String driver) {
+		this.driver = driver;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+	public int getAcceleration() {
+		return acceleration;
+	}
+
+	public void setAcceleration(int acceleration) {
+		this.acceleration = acceleration;
+	}
+
+	public int getPosition() {
+		return position;
+	}
+
+	public void setPosition(int position) {
+		this.position = position;
+	}
+
 }
