@@ -29,6 +29,9 @@ public class Regular extends Vuelo {
 		return "\nVuelo Regular" + super.toString() + "\nPlazas Libres: " + plazaslibres;
 	}
 
+
+
+
 @Override
 public int getNumeroPasajeros() {
 	return getNumplazas() - plazaslibres;

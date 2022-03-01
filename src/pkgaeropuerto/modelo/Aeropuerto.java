@@ -63,6 +63,20 @@ public class Aeropuerto {
 	 *            Aerolinea de la que se imprimiran los vuelos regulares
 	 */
 	public void regularPorPlazas(String aerolinea) {
+		int pos = this.Aerolines.indexOf(new Aerolinea(aerolinea));
+		List<Regular> regulares = new ArrayList<Regular>();
+		if(pos > 0) {
+			Aerolinea a = this.Aerolines.get(pos);
+			
+			for(Vuelo v : a.getVuelos()) {
+				if(v instanceof Regular) {
+					regulares.add((Regular) v);
+				}
+				Collections.reverse(regulares);
+				
+			}
+		}
+		for(Vuelo x : regulares) System.out.println(x.toString());
 	}
 
 	/**
