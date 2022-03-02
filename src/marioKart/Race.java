@@ -4,11 +4,6 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-
-
-
-
-
 public class Race{
 	private String name;
 	private Circuit circuit;
@@ -39,7 +34,7 @@ public void run() {
 		}
 
 public String showResult() {
-	int contador = 0;
+	int contador = 1;
 	StringBuilder sb = new StringBuilder();
 	sb.append("Carrera : ");
 	sb.append(name);
