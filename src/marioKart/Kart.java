@@ -81,8 +81,7 @@ public class Kart {
 		if (getClass() != obj.getClass())
 			return false;
 		Kart other = (Kart) obj;
-		return acceleration == other.acceleration && Objects.equals(driver, other.driver) && random == other.random
-				&& speed == other.speed;
+		return acceleration == other.acceleration && Objects.equals(driver, other.driver) && speed == other.speed;
 	}
 
 	
