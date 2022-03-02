@@ -1,4 +1,4 @@
-package marioKart;
+package mario;
 
 public class Main {
 
