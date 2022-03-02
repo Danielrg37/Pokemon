@@ -12,6 +12,15 @@ public class Circuit{
 	this.distance = distance;
 }
 
+	public int difficulty() {
+		Random random= new Random();
+		// just in 33% of the cases
+		if(random.nextInt(3) == 0) {
+			return random.nextInt(5);
+			} else{
+				return 0;
+				}}
+	
 
 	public String getName() {
 		return nombre;

@@ -1,5 +1,7 @@
 package mario;
 
+import java.util.Objects;
+
 public class Kart {
 	private String driver;
 	private int speed;
@@ -22,6 +24,7 @@ public class Kart {
 		acceleration = MAX_POINTS - speed;
 		System.out.println(acceleration);
 	}
+	
 	
 	
 	public int move() {
@@ -69,4 +72,29 @@ public class Kart {
 		this.position = position;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(acceleration, driver, random, speed);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Kart other = (Kart) obj;
+		return acceleration == other.acceleration && Objects.equals(driver, other.driver) && random == other.random
+				&& speed == other.speed;
+	}
+
+	
+
+	
+
+	
+
+	
 }
