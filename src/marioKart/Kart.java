@@ -1,13 +1,14 @@
-package mario;
+package marioKart;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Kart {
 	private String driver;
 	private int speed;
 	private int acceleration;
 	private int position;
-	private int random;
+	private Random random;
 	private int MAX_POINTS = 18;
 	private int MAX_RANDOM = 6;
 	
@@ -18,17 +19,16 @@ public class Kart {
 		init();
 	}
 	
-	public void init() {
+	private void init() {
 		position = 0;
-		speed = (int) (Math.random() * ((MAX_POINTS + 1) - 0) + 0);
+		speed = (int) (Math.random() * (MAX_POINTS - 0) + 0);
 		acceleration = MAX_POINTS - speed;
-		System.out.println(acceleration);
 	}
 	
 	
 	
 	public int move() {
-		int movimiento = (int) (speed + acceleration + (Math.random() * ((MAX_RANDOM + 1) - 0) + 0));
+		int movimiento = (int) (speed + acceleration + (Math.random() * (MAX_RANDOM - 0) + 0));
 		return movimiento;  
 	}
 	
@@ -36,8 +36,7 @@ public class Kart {
 
 	@Override
 	public String toString() {
-		return "Kart [driver=" + driver + ", speed=" + speed + ", acceleration=" + acceleration + ", position="
-				+ position + ", random=" + random + ", MAX_POINTS=" + MAX_POINTS + ", MAX_RANDOM=" + MAX_RANDOM + "]";
+		return "Kart [driver=" + driver + ", speed=" + speed + ", acceleration=" + acceleration + "]";
 	}
 
 	public String getName() {
@@ -72,10 +71,6 @@ public class Kart {
 		this.position = position;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(acceleration, driver, random, speed);
-	}
 
 	@Override
 	public boolean equals(Object obj) {

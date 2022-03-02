@@ -1,4 +1,4 @@
-package mario;
+package marioKart;
 
 import java.util.Random;
 
@@ -14,7 +14,7 @@ public class Circuit{
 
 	public int difficulty() {
 		Random random= new Random();
-		// just in 33% of the cases
+
 		if(random.nextInt(3) == 0) {
 			return random.nextInt(5);
 			} else{
