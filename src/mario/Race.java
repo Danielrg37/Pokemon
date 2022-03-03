@@ -17,7 +17,7 @@ public Race(String name) {
 }
 	
 public void run() {
-	while(notAllFinished() == false) {
+	while(notAllFinished()) {
 		for(Kart k : karts) {
 			if(k != null) 
 			{
