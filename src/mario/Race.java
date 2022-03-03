@@ -70,10 +70,12 @@ private boolean isFinished(Kart kart) {
 
 public boolean notAllFinished() {
 	boolean queda = false;
+	while(queda == false) {
 	for (Kart k : karts) {
 		if(k != null) {
 			queda = true;
 		}
+	}
 	}
 	return queda;
 }
