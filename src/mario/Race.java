@@ -43,7 +43,7 @@ public String showResult() {
 	for(Kart i : finishedKarts)
 		sb.append("\n" + (contador++) + "." + i.toString());
 	return sb.toString();
-	}
+}
 
 private void moveKart(Kart kart) {
 	int adelantamientos = 0;
