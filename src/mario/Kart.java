@@ -21,14 +21,14 @@ public class Kart {
 	
 	private void init() {
 		position = 0;
-		speed = (int) (Math.random() * (MAX_POINTS - 0) + 0);
+		speed = (int) (Math.random() * (MAX_POINTS - 1) + 1);
 		acceleration = MAX_POINTS - speed;
 	}
 	
 	
 	
 	public int move() {
-		int movimiento = (int) (speed + acceleration + (Math.random() * (MAX_RANDOM - 0) + 0));
+		int movimiento = (int) (speed + acceleration + (Math.random() * (MAX_RANDOM - 1) + 1));
 		return movimiento;  
 	}
 	
