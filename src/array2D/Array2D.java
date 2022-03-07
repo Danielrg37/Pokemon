@@ -118,7 +118,7 @@ public class Array2D
      */
     public   int sumarFila(int f)
     {
-    	int suma;
+    	int suma = 0;
     	for(int c = 0; c < matriz[f].length; c++) {
 			suma += matriz[f][c];
     	}
@@ -271,13 +271,7 @@ public class Array2D
      */
     public  void intercambiar()
     {
-    int suma = 0;
-     for(int f = 0; f < 1; f++) {
-    	 for(int c = 0; c < 1; c++) {
-    		 
-    	 }
-     }
-      columnaSumaMaxima.posicion;
+    
         
     }
 
