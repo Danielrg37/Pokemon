@@ -133,11 +133,10 @@ public class Array2D
     public   int sumarColumna(int c)
     {
     	int suma = 0;
-    	for(int f = 0; f <= matriz[c].length; f++) {
-			suma += matriz[f][c];
+    	for(int f = 0; f < matriz.length; f++) {
+    		suma += matriz[f][c];
     	}
 		return suma;
-        
     }
 
     /**
@@ -202,7 +201,14 @@ public class Array2D
      */
     public   int sumarDiagonalSecundaria()
     {
-       return 0;
+    	int suma = 0;
+      for(int f = matriz.length; f > matriz.length; f--) {
+    	  for(int c = matriz[f].length; c > matriz[f].length; c--)
+    		  if(f == c) {
+    			  suma += matriz[f][c];
+    		  }
+    	  }
+      }
         
         
     }
@@ -219,7 +225,7 @@ public class Array2D
      */
     public  int[][] traspuesta()
     {
-    	  int[][] traspuesta = null;
+    	  int[][] traspuesta = new int[getFilas()][getColumnas(getFilas())];
     	  
 
   		for(int f = 0; f < matriz.length; f++) {
