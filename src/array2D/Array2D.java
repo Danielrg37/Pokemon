@@ -68,12 +68,7 @@ public class Array2D
      */
     public int getColumnas(int filas){
     {
-
-    	int columnas = 0;
-         for(int f = 0; f < matriz.length; f++) {
-        	 columnas++;
-         }
-         return columnas;
+    	return this.matriz[filas].length;
     }
 
     }
@@ -93,12 +88,7 @@ public class Array2D
      */
     public String toString()
     {
-    		StringBuilder builder = new StringBuilder();
-    		builder.append("Array2D [matriz=");
-    		builder.append(Arrays.toString(matriz));
-    		builder.append("]");
-    		return builder.toString();
-    	
+    return (Arrays.deepToString(matriz));
 		
         
     }
@@ -144,7 +134,7 @@ public class Array2D
      */
     public  int[] sumarFilas()
     {
-    	 int[] sumaFilas= null;
+    	 int[] sumaFilas= new int[getFilas()];
     	 int suma = 0;
     	for(int f = 0; f < matriz.length; f++) {
 			for(int c = 0; c < matriz[f].length; c++) {
@@ -164,7 +154,7 @@ public class Array2D
      */
     public  int[] sumarColumnas()
     {
-        int [] sumaColumnas = null;
+        int [] sumaColumnas = new int[getColumnas(getFilas() -1)];
         int suma = 0;
         for(int f = 0; f < matriz.length; f++) {
 			for(int c = 0; c < matriz[f].length; c++) {
@@ -202,14 +192,16 @@ public class Array2D
     public   int sumarDiagonalSecundaria()
     {
     	int suma = 0;
-      for(int f = matriz.length; f > matriz.length; f--) {
-    	  for(int c = matriz[f].length; c > matriz[f].length; c--)
-    		  if(f == c) {
-    			  suma += matriz[f][c];
-    		  }
-    	  }
-	return suma;
-      }
+        for(int f = 0; f < matriz.length; f++) {
+        	for(int c = 0; c < matriz[f].length; c++) {
+        		if(f+c == matriz.length-1) {
+        			suma += matriz[f][c];
+        		}
+        	}
+        }
+		return suma;
+    }
+    
         
         
     
@@ -245,10 +237,10 @@ public class Array2D
     {
     	int maximo = 0;
     	int posicion = 0;
-    
+        int suma = 0;
     	for(int f = 0; f < matriz.length; f++) {
 			for(int c = 0; c < matriz[f].length; c++) {
-				int suma = 0;
+				
 				suma += matriz[f][c];
 				if(suma > maximo) {
 					maximo = suma;
@@ -271,9 +263,36 @@ public class Array2D
      */
     public  void intercambiar()
     {
-    
+    	int[][] auxiliar = new int[getFilas()][1];
+    	int maximo = 0;
+    	int posicion = 0;
+        int suma = 0;
         
+    	for(int f = 0; f < matriz.length; f++) {
+			for(int c = 0; c < matriz[f].length; c++) {
+				
+				suma += matriz[f][c];
+				if(suma > maximo) {
+					maximo = suma;
+					posicion = c;
+					
+				}
+			}
+			}
+    if(posicion > 0) {
+    	for(int f = 0; f < matriz.length; f++) {
+			auxiliar[1][1] = matriz[f][posicion];
     }
+    	
+    		for(int f = 0; f < matriz.length; f++) {
+    			matriz[1][f]= matriz[f][posicion];
+    		}
+    		for(int f = 0; f < auxiliar.length; f++) {
+    			auxiliar[f][posicion] = matriz[f][1];
+    	}
+    }
+    }
+
 
     /**
      *  Devuelve un ragged array donde la 1ª fila contiene el primer elemento de la 1ª fila de matriz,
@@ -291,12 +310,20 @@ public class Array2D
      */
     public int[][] arrayRagged()
     {
-       return null;
+   int[][] ragged =  new int[getFilas()][getColumnas(getFilas())];
+       for(int f = 0; f < matriz.length; f++) {
+    	   for(int c = 0; c < f; c++) {
+    		   ragged[f][c] = matriz[f][c];
+    		   }
+    	   }
+	return ragged;
+    	   
+       }
         		
         	
         
         
-    }
+    
 
     /**
      *  Muestra el array pero de la forma indicada. Cada nº formateado a 5 posiciones.
@@ -322,8 +349,7 @@ public class Array2D
      */
     public int contarImpares()
     {
-        return 0;
-        
+    return 0;
     }
 
     /**
@@ -359,34 +385,25 @@ public class Array2D
      *  
      *
      */
-    public  int [][] obtenerSubArray(int fila1, int fila2, int col1, int col2)
+    public int[][] obtenerSubArray(int fila1, int fila2, int col1, int col2)
     {
-    	int subfilas = fila2 - fila1;
-    	int subcolumnas = col2 - col1;
-    	int[][] subArray;
-    	subArray = new int[subfilas][subcolumnas];
-
-    
-    	
-    
+    	int aux = fila1;
+    	 int[][] subarray =new int[fila2 - fila1][col2 - col1];
     	for(int f = 0; f < matriz.length; f++) {
-			for(int c = 0; c < matriz[f].length; c++) {
-				if(f == fila1 && c == col1) {
-					int f1 = f;
-					int c1 = c;
-					int f2 = fila2;
-					int c2 = col2;
-				while(f1 < f2 && c1 < c2) {
-					
-					subArray[f1][c1] = matriz[f][c];
-					f1++;
-					c1++;
-				}
-				
-        
-    } 
-			}
+    		if(f == fila1) {
+    		subarray[f][0] = matriz[f][0];
+    			while(f < fila2) {
+    				for(int c = 0; c < matriz[f].length; c++) {
+    					subarray[f][c] = matriz[aux][c];
+    					f++;
+    				}
+    			}
+    		}
     	}
-		return subArray;
-    }
+		return subarray;
+    	
+    	 
 }
+}
+
+
