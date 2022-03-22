@@ -107,7 +107,7 @@ public class ListaNombres
         	// Si index pasa a ser mayor que 0, por tanto existe y el boolean de que el nombre existe, pasa a true
         	boolean esta = false;
         	int index = Arrays.binarySearch(lista, nombre);
-        	if(index > 0) {
+        	if(index >= 0) {
         		esta = true;
         		
         	}
@@ -253,7 +253,7 @@ public class ListaNombres
     
             //Luego aqui al final, convierto el List de auxiliar al array empiezan
             
-            return empiezan = auxiliar.toArray(empiezan);
+            empiezan = auxiliar.toArray(empiezan);
 }
 			return empiezan;
         }
@@ -275,27 +275,26 @@ public class ListaNombres
                 
         
         
-          /**
-         * Lee de un fichero de texto una serie 
-         * de nombres con ayuda de un objeto de la 
-         * clase Scanner y los almacena en la lista
-         */
-        public void cargarDeFichero() 
-        {
-             try
-             {
-                     Scanner sc = new Scanner(new File("nombres.txt"));
-                     while (sc.hasNextLine() && !listaLlena()) {
-                           insertarNombre(sc.nextLine());
-                     sc.close();
-                     }
-             }
-             
-             catch (IOException e)
-             {
-                     e.printStackTrace();
-             }
-        }
+
+        /**
+       * Lee de un fichero de texto una serie 
+       * de nombres con ayuda de un objeto de la 
+       * clase Scanner y los almacena en la lista
+       */
+      public void cargarDeFichero() 
+      {
+           try
+           {
+                   Scanner sc = new Scanner(new File("nombres.txt"));
+                   while (sc.hasNextLine() && !listaLlena())
+                         insertarNombre(sc.nextLine());
+                   sc.close();
+           }
+           catch (IOException e)
+           {
+                   e.printStackTrace();
+           }
+      }
 }
         
 
