@@ -72,7 +72,7 @@ public class ListaNombres
          */
         public boolean insertarNombre(String nombre) {
        
-        
+        //Aqui lo he intentado hacer varias veces y no he conseguido resolverlo
         	
         	boolean insercion = false;
              for(int i = 0; i < lista.length; i++) {
