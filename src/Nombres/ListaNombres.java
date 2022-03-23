@@ -4,7 +4,6 @@ package Nombres;
 
 
 
-import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -70,9 +69,9 @@ public class ListaNombres
          * @return  true si la inserci�n se hace con �xito   
          *
          */
-        public boolean insertarNombre(String nombre) {
+        public boolean insertarNombre(String nombre)
        
-        //Aqui lo he intentado hacer varias veces y no he conseguido resolverlo
+        
         	
         	boolean insercion = false;
              for(int i = 0; i < lista.length; i++) {
@@ -86,7 +85,13 @@ public class ListaNombres
              
            char auxiliar = nombre.charAt(0);
            
-           
+           for(int i = 0; i < lista.length; i++) {
+        	   while(Character.isUpperCase(lista[i].charAt(0))) {
+        		   if(auxiliar < lista[1].charAt(0)) {
+        			   lista[0] = nombre;
+        		   }
+        	   }
+           }
 			return insercion;
              
              
@@ -107,7 +112,7 @@ public class ListaNombres
         	// Si index pasa a ser mayor que 0, por tanto existe y el boolean de que el nombre existe, pasa a true
         	boolean esta = false;
         	int index = Arrays.binarySearch(lista, nombre);
-        	if(index >= 0) {
+        	if(index > 0) {
         		esta = true;
         		
         	}
@@ -253,7 +258,7 @@ public class ListaNombres
     
             //Luego aqui al final, convierto el List de auxiliar al array empiezan
             
-            empiezan = auxiliar.toArray(empiezan);
+            return empiezan = auxiliar.toArray(empiezan);
 }
 			return empiezan;
         }
@@ -275,26 +280,27 @@ public class ListaNombres
                 
         
         
-
-        /**
-       * Lee de un fichero de texto una serie 
-       * de nombres con ayuda de un objeto de la 
-       * clase Scanner y los almacena en la lista
-       */
-      public void cargarDeFichero() 
-      {
-           try
-           {
-                   Scanner sc = new Scanner(new File("nombres.txt"));
-                   while (sc.hasNextLine() && !listaLlena())
-                         insertarNombre(sc.nextLine());
-                   sc.close();
-           }
-           catch (IOException e)
-           {
-                   e.printStackTrace();
-           }
-      }
+          /**
+         * Lee de un fichero de texto una serie 
+         * de nombres con ayuda de un objeto de la 
+         * clase Scanner y los almacena en la lista
+         */
+        public void cargarDeFichero() 
+        {
+             try
+             {
+                     Scanner sc = new Scanner(new File("nombres.txt"));
+                     while (sc.hasNextLine() && !listaLlena()) {
+                           insertarNombre(sc.nextLine());
+                     sc.close();
+                     }
+             }
+             
+             catch (IOException e)
+             {
+                     e.printStackTrace();
+             }
+        }
 }
         
 
