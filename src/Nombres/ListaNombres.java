@@ -262,7 +262,7 @@ public class ListaNombres
         	//Hice un List porque vagancia sinceramente, era más cómodo para filtrar
             List<String> auxiliar = new ArrayList<String>();
             
-            //Aqui hice el string donde almacenar el resultado final
+            //Aqui hice el array donde almacenar el resultado final
             String[] empiezan = new String[lista.length];
             
             //Con el UpperCase, compruebo si es mayuscula y con el toLowerCase, la paso a miniscula
