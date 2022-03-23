@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class ListaNombres
 {
@@ -73,6 +74,7 @@ public class ListaNombres
        
         	//Este lo he intentado resolver pero no me ha salido
         	boolean insercion = false;
+        	int contadormayus = 0;
              for(int i = 0; i < lista.length; i++) {
             	 if(lista[i] == nombre) {
             		 insercion = false;
@@ -84,6 +86,52 @@ public class ListaNombres
              
            char auxiliar = nombre.charAt(0);
            
+           
+           for(int i = 0; i <lista.length; i++) {
+        	   char primeraletra = lista[i].charAt(0);
+        	   
+        	   if(Character.isUpperCase(primeraletra) && Character.isUpperCase(auxiliar)) {
+        		   
+        		   if(auxiliar < lista[1].charAt(0)) {
+        			   String tmp = lista[0];
+        			   for(int x = 0; x < lista.length; i++) {
+        				   lista[x] = lista[x + 1];
+        			   }
+        			   lista[0] = tmp;
+        		   }
+        		   
+        		   
+        		   if(auxiliar > lista[i -1].charAt(0) && auxiliar < lista[i + 1].charAt(0)){
+        			   String tmp = lista[i];
+        			   for(int x = i; x < lista.length; x++) {
+        				   lista[x] = lista[x + 1];   
+        			   }
+        			   lista[i] = tmp;
+        		   }
+        		   contadormayus++;
+        	   }
+        	   
+        	   
+        	   if(Character.isLowerCase(primeraletra) && Character.isLowerCase(auxiliar)) {
+        		   
+        		   
+        		   if(auxiliar < lista[contadormayus + 1].charAt(0)) {
+        			   String tmp = lista[contadormayus + 1];
+        			   for(int x = 0; x < lista.length; i++) {
+        				   lista[x] = lista[x + 1];
+        			   }
+        			   lista[contadormayus + 1] = tmp;
+        		   }
+        		   
+        		   if(auxiliar > lista[i -1].charAt(0) && auxiliar < lista[i + 1].charAt(0)){
+        			   String tmp = lista[i];
+        			   for(int x = i; x < lista.length; x++) {
+        				   lista[x] = lista[x + 1];   
+        			   }
+        			   lista[i] = tmp;
+        		   }
+        	   }
+           }
        
 			return insercion;
              
