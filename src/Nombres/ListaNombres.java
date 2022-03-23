@@ -71,8 +71,6 @@ public class ListaNombres
          */
         public boolean insertarNombre(String nombre) {
        
-        
-        	
         	boolean insercion = false;
              for(int i = 0; i < lista.length; i++) {
             	 if(lista[i] == nombre) {
@@ -84,17 +82,8 @@ public class ListaNombres
              }
              
            char auxiliar = nombre.charAt(0);
+           
        
-           if(Character.isUpperCase(auxiliar)) {
-        	   for(int i = 0; i < lista.length; i++) {
-        	   while(Character.isUpperCase(lista[i].charAt(0))){
-        		  char primeraletra = lista[i].charAt(0);
-        		  if(auxiliar < primeraletra) {
-        			  
-        		  }
-        	   }
-           }
-           }
 			return insercion;
              
         }
