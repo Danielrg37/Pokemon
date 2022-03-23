@@ -72,69 +72,80 @@ public class ListaNombres
          */
         public boolean insertarNombre(String nombre) {
        
-        	//Este lo he intentado resolver pero no me ha salido
+            //Odio este metodo, lo he intentado como de 4 formas distintas ayer y durante Avelino hasta dar con esta ahora
+        	//Intentaba hacerlo sacando la inicial de nombre y en función si era mayus o minus pero era caotico
+        	
+        	//Declaro la boolean insercion a false
+        	
         	boolean insercion = false;
-        	int contadormayus = 0;
+        	
+        	//Esta variable me sirve para más adelante
+        	int contador = 0;
+        	
+        	
+        	//En primer lugar, compruebo si el nombre ya está o la lista ya está llena 
+        	
+        	//Como para introducir el nombre, tiene que haber minimo un null, recorro array y pongo a los null el nombre (Daba problema si había varios null)
+            //Por ello, puse la variable contador que una vez añadido valor al primer null, la aumento y me sirve para que solo la pase a el primer null
+            //Al haber insertado el nombre, paso contador a 1
              for(int i = 0; i < lista.length; i++) {
+            	 
+            	 
             	 if(lista[i] == nombre) {
             		 insercion = false;
             	 }
             	 if(listaLlena() == true) {
             		 insercion = false;
             	 }
+             
+         
+               if(contador == 0){
+               if(lista[i] == null){
+                   lista[i] = nombre;
+                   insercion = true;
+                   contador++;
+               }
+               
+            }
+        
              }
+             //Este me sirve para ordenar el array, simplemente voy comparando los valores e intercambiando
+             //Como si encontraba un nulo en i o j, petaba porque claro no hay char que comparar
+             //He metido el if de comparación dentro de otro if para que no compare valores nulos y va como un tiro
+                 for(int i = 0; i < lista.length; i++){
+                     for(int j = i + 1; j < lista.length; j++){
+                         //Pero probandolo, me di cuenta de un problema y es si la letra inicial era igual
+                         if(lista[i] != null && lista[j] != null){
+                        
+                        //Si coinciden, va recorriendo las letras de cada palabra hasta que encuentre una distinta
+                       //Una vez hecho eso, intercambia posiciones
+                         if(lista[i].charAt(0) == lista[j].charAt(0)){
+                             for(int c = 0; c < lista[i].length(); c++){
+                                 if(lista[i].charAt(c) > lista[j].charAt(c)){
+                             String auxiliar = lista[i];
+                             lista[i] = lista[j];
+                             lista[j] = auxiliar;
+                         }
+                             }
+                         }
+                         //Este es más simple, no coinciden y directamente se pone a intercambiar
+                         if(lista[i].charAt(0) > lista[j].charAt(0)){
+                             String auxiliar = lista[i];
+                             lista[i] = lista[j];
+                             lista[j] = auxiliar;
+                         }
+                     }
+                 }
+              }
+            
+        
+           return insercion;
+        
              
-           char auxiliar = nombre.charAt(0);
-           
-           
-           for(int i = 0; i <lista.length; i++) {
-        	   char primeraletra = lista[i].charAt(0);
-        	   
-        	   if(Character.isUpperCase(primeraletra) && Character.isUpperCase(auxiliar)) {
-        		   
-        		   if(auxiliar < lista[1].charAt(0)) {
-        			   String tmp = lista[0];
-        			   for(int x = 0; x < lista.length; i++) {
-        				   lista[x] = lista[x + 1];
-        			   }
-        			   lista[0] = tmp;
-        		   }
-        		   
-        		   
-        		   if(auxiliar > lista[i -1].charAt(0) && auxiliar < lista[i + 1].charAt(0)){
-        			   String tmp = lista[i];
-        			   for(int x = i; x < lista.length; x++) {
-        				   lista[x] = lista[x + 1];   
-        			   }
-        			   lista[i] = tmp;
-        		   }
-        		   contadormayus++;
-        	   }
-        	   
-        	   
-        	   if(Character.isLowerCase(primeraletra) && Character.isLowerCase(auxiliar)) {
-        		   
-        		   
-        		   if(auxiliar < lista[contadormayus + 1].charAt(0)) {
-        			   String tmp = lista[contadormayus + 1];
-        			   for(int x = 0; x < lista.length; i++) {
-        				   lista[x] = lista[x + 1];
-        			   }
-        			   lista[contadormayus + 1] = tmp;
-        		   }
-        		   
-        		   if(auxiliar > lista[i -1].charAt(0) && auxiliar < lista[i + 1].charAt(0)){
-        			   String tmp = lista[i];
-        			   for(int x = i; x < lista.length; x++) {
-        				   lista[x] = lista[x + 1];   
-        			   }
-        			   lista[i] = tmp;
-        		   }
-        	   }
-           }
-       
-			return insercion;
-             
+        
+            
+        
+        				
         }
             
         
