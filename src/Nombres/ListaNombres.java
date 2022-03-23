@@ -69,7 +69,7 @@ public class ListaNombres
          * @return  true si la inserci�n se hace con �xito   
          *
          */
-        public boolean insertarNombre(String nombre)
+        public boolean insertarNombre(String nombre) {
        
         
         	
@@ -84,19 +84,22 @@ public class ListaNombres
              }
              
            char auxiliar = nombre.charAt(0);
-           
-           for(int i = 0; i < lista.length; i++) {
-        	   while(Character.isUpperCase(lista[i].charAt(0))) {
-        		   if(auxiliar < lista[1].charAt(0)) {
-        			   lista[0] = nombre;
-        		   }
+       
+           if(Character.isUpperCase(auxiliar)) {
+        	   for(int i = 0; i < lista.length; i++) {
+        	   while(Character.isUpperCase(lista[i].charAt(0))){
+        		  char primeraletra = lista[i].charAt(0);
+        		  if(auxiliar < primeraletra) {
+        			  
+        		  }
         	   }
+           }
            }
 			return insercion;
              
-             
-            
         }
+            
+        
         																																																																
         /**
          *  Busca un nombre en la lista
