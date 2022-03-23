@@ -71,6 +71,7 @@ public class ListaNombres
          */
         public boolean insertarNombre(String nombre) {
        
+        	//Este lo he intentado resolver pero no me ha salido
         	boolean insercion = false;
              for(int i = 0; i < lista.length; i++) {
             	 if(lista[i] == nombre) {
