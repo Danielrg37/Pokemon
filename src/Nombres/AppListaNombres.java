@@ -29,10 +29,10 @@ public class AppListaNombres
 
     	   lista.cargarDeFichero();
     	   lista.toString();
-           lista.nombreMasLargo();
+           System.out.println("El nombre más largo es" + lista.nombreMasLargo());
            lista.empiezanPorLetra('r');
-           lista.toString();
-           lista.empiezanPor("aL");
-           lista.empiezanPor("a");
+           System.out.println("Después de los que empiezan por r" + lista.toString());
+           System.out.println("Empiezan por al" + lista.empiezanPor("aL"));
+           System.out.println("Empiezan por a" + lista.empiezanPor("a"));
     }
 }

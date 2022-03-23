@@ -76,12 +76,10 @@ public class ListaNombres
         	//Intentaba hacerlo sacando la inicial de nombre y en función si era mayus o minus pero era caotico
         	
         	//Declaro la boolean insercion a false
-        	
         	boolean insercion = false;
         	
         	//Esta variable me sirve para más adelante
         	int contador = 0;
-        	
         	
         	//En primer lugar, compruebo si el nombre ya está o la lista ya está llena 
         	
@@ -89,26 +87,21 @@ public class ListaNombres
             //Por ello, puse la variable contador que una vez añadido valor al primer null, la aumento y me sirve para que solo la pase a el primer null
             //Al haber insertado el nombre, paso contador a 1
              for(int i = 0; i < lista.length; i++) {
-            	 
-            	 
             	 if(lista[i] == nombre) {
             		 insercion = false;
             	 }
+            	 
             	 if(listaLlena() == true) {
             		 insercion = false;
             	 }
              
-         
                if(contador == 0){
                if(lista[i] == null){
                    lista[i] = nombre;
                    insercion = true;
                    contador++;
-               }
+               }}}
                
-            }
-        
-             }
              //Este me sirve para ordenar el array, simplemente voy comparando los valores e intercambiando
              //Como si encontraba un nulo en i o j, petaba porque claro no hay char que comparar
              //He metido el if de comparación dentro de otro if para que no compare valores nulos y va como un tiro
@@ -134,22 +127,12 @@ public class ListaNombres
                              lista[i] = lista[j];
                              lista[j] = auxiliar;
                          }
+                         }
                      }
                  }
-              }
-            
-        
-           return insercion;
-        
-             
-        
-            
-        
-        				
+           return insercion;		
         }
-            
-        
-        																																																																
+           																																																																
         /**
          *  Busca un nombre en la lista
          *  Puesto que la lista est� en todo momento ordenada
@@ -166,10 +149,8 @@ public class ListaNombres
         	int index = Arrays.binarySearch(lista, nombre);
         	if(index > 0) {
         		esta = true;
-        		
         	}
 			return esta;
-        	
         }
         
         /**
