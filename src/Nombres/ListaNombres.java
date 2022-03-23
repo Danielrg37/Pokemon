@@ -259,7 +259,7 @@ public class ListaNombres
         {
         	 //Aqui se me fue un poco la olla, no sé si es la manera más eficiente
         	
-        	//Hice un List porque vagancia sinceramente, era más cómodo para filtrar
+        	//Hice un List porque era más cómodo para filtrar
             List<String> auxiliar = new ArrayList<String>();
             
             //Aqui hice el array donde almacenar el resultado final
