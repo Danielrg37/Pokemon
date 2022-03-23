@@ -104,13 +104,13 @@ public class ListaNombres
                
              //Este me sirve para ordenar el array, simplemente voy comparando los valores e intercambiando
              //Como si encontraba un nulo en i o j, petaba porque claro no hay char que comparar
-             //He metido el if de comparación dentro de otro if para que no compare valores nulos y va como un tiro
+             //He metido el if de comparación dentro de otro if para que no compare valores nulos
                  for(int i = 0; i < lista.length; i++){
                      for(int j = i + 1; j < lista.length; j++){
                          //Pero probandolo, me di cuenta de un problema y es si la letra inicial era igual
                          if(lista[i] != null && lista[j] != null){
                         
-                        //Si coinciden, va recorriendo las letras de cada palabra hasta que encuentre una distinta
+                        //Si coinciden, va recorriendo las letras hasta que encuentre una distinta
                        //Una vez hecho eso, intercambia posiciones
                          if(lista[i].charAt(0) == lista[j].charAt(0)){
                              for(int c = 0; c < lista[i].length(); c++){
@@ -170,7 +170,7 @@ public class ListaNombres
            //Recorro lista
            for(int i = 0; i < lista.length; i++) {
            //Saco cuanto de largo es la palabra
-           //Como al recorrer, petaba porque le pasaba a un int algo null, hice el while xd
+           //Como al recorrer, petaba porque le pasaba a un int algo null, hice el if xd
         	   if(lista[i] != null) {
                int cantidad = lista[i].length();
               //Si supera al maximo, actualizo maximo y actualizo nombre
