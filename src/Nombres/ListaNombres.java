@@ -170,8 +170,8 @@ public class ListaNombres
            //Recorro lista
            for(int i = 0; i < lista.length; i++) {
            //Saco cuanto de largo es la palabra
-           //Como al borrar, petaba porque le pasaba a un int algo con valor null, hice el while xd
-        	   while(lista[i] != null) {
+           //Como al recorrer, petaba porque le pasaba a un int algo null, hice el while xd
+        	   if(lista[i] != null) {
                int cantidad = lista[i].length();
               //Si supera al maximo, actualizo maximo y actualizo nombre
           	if(cantidad > maximo) {
