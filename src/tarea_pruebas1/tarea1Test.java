@@ -33,9 +33,8 @@ class tarea1Test {
 	@Test
 	void testcontar() {
 		this.tarea = new tarea1();
-		int expected = 5;
-		int actual = this.tarea.longitud("Pacos");
+		int expected = 1;
+		int actual = this.tarea.contarLetra("Pacos", 'a');
 	}
 }
 
-}
