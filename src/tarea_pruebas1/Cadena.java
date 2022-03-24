@@ -1,7 +1,7 @@
 package tarea_pruebas1;
 
 
-public class tarea1{
+public class Cadena{
 	
 	public int longitud(String cadena) {
 	int longitud = 0;
