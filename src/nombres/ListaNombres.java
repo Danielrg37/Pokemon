@@ -146,13 +146,29 @@ public class ListaNombres
         	//Como int por defecto es 0, hago una busqueda binaria con el método que nos dijiste en clase, con el array de lista
         	// Si index pasa a ser mayor que 0, por tanto existe y el boolean de que el nombre existe, pasa a true
         	boolean esta = false;
-        	int index = Arrays.binarySearch(lista, nombre);
+        	int tope = 1;
+        	int contador = 0;
+        	int pos = 0;
+        	for(int i =0; i < lista.length; i++) {
+        		
+        			if(lista[i] == null) {
+        				contador++;
+        				pos = i;
+        			if(contador == tope) {
+        				break;
+        			}
+        		}
+        	}
+        	
+        		int index = Arrays.binarySearch(lista, 0, pos, nombre);
+        	
+        	
         	if(index > 0) {
         		esta = true;
         	}
-			return esta;
-        }
+        	return esta;
         
+        }
         /**
          *  Busca y devuelve el nombre de mayor longitud
          *  en la lista. Si hay varios devuelve el
