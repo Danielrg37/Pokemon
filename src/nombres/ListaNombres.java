@@ -178,6 +178,9 @@ public class ListaNombres
           		maximo = cantidad;
           		nombre = lista[i];
           	 }
+          	if(listaVacia() == true) {
+          		return null;
+          	}
            }
            }
 		return nombre;
