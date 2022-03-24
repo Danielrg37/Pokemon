@@ -11,8 +11,9 @@ class CadenaTest {
 	@Test
 	void testlongitud() {
 		this.tarea = new Cadena();
-		int expected = 5;
+		int expected = 6;
 		int actual = this.tarea.longitud("Alpine");
+		assertEquals(expected, actual, "Error");
 	}
 
 	
@@ -21,6 +22,7 @@ class CadenaTest {
 		this.tarea = new Cadena();
 		int expected = 2;
 		int actual = this.tarea.vocales("Clase");
+		assertEquals(expected, actual, "Error");
 	}
 	
 	@Test
@@ -28,13 +30,16 @@ class CadenaTest {
 		this.tarea = new Cadena();
 		String expected = "aduyA";
 		String actual = this.tarea.invertir("Ayuda");
+		assertEquals(expected, actual, "Error");
 	}
 	
 	@Test
 	void testcontar() {
 		this.tarea = new Cadena();
 		int expected = 1;
-		int actual = this.tarea.contarLetra("Xocas", 'o');
+		int actual = this.tarea.contarLetra("Xocas CathyVipi", 'o');
+		assertEquals(expected, actual, "Error");
 	}
+	
 }
 
