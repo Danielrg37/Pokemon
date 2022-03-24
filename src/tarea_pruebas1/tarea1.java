@@ -5,7 +5,9 @@ public class tarea1{
 	
 	public int longitud(String cadena) {
 	int longitud = 0;
-	for(int i = 0; i < cadena.length(); i++)
+	for(int i = 0; i < cadena.length(); i++) {
+		longitud++;
+	}
 	return longitud;
 	}
 	
@@ -20,7 +22,12 @@ public class tarea1{
 	}
 	
 	public String invertir(String cadena) {
-		return 
+		String resultado;
+		
+		StringBuilder auxiliar = new StringBuilder(cadena);
+		resultado = auxiliar.reverse().toString();
+		
+		return resultado;
 	}
 	
 	public int contarLetra(String cadena, char caracter) {
