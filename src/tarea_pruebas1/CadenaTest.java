@@ -12,7 +12,7 @@ class CadenaTest {
 	void testlongitud() {
 		this.tarea = new Cadena();
 		int expected = 5;
-		int actual = this.tarea.longitud("Pacos");
+		int actual = this.tarea.longitud("Alpine");
 	}
 
 	
@@ -20,21 +20,21 @@ class CadenaTest {
 	void testvocales() {
 		this.tarea = new Cadena();
 		int expected = 2;
-		int actual = this.tarea.vocales("Pacos");
+		int actual = this.tarea.vocales("Clase");
 	}
 	
 	@Test
 	void testinvertir() {
 		this.tarea = new Cadena();
-		String expected = "socap";
-		String actual = this.tarea.invertir("Pacos");
+		String expected = "aduyA";
+		String actual = this.tarea.invertir("Ayuda");
 	}
 	
 	@Test
 	void testcontar() {
 		this.tarea = new Cadena();
 		int expected = 1;
-		int actual = this.tarea.contarLetra("Pacos", 'a');
+		int actual = this.tarea.contarLetra("Xocas", 'o');
 	}
 }
 
