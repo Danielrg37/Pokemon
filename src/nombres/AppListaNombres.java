@@ -25,18 +25,17 @@ public class AppListaNombres
      */
     public static void main(String[] args)
     {
+    	
+    	//Arregle la lectura de ficheros
     	ListaNombres lista = new ListaNombres(22);
-
+    		
     	   lista.cargarDeFichero();
-    	   lista.toString();
-           System.out.println("El nombre más largo es");
-           lista.nombreMasLargo();
-           lista.empiezanPorLetra('r');
-           System.out.println("Después de los que empiezan por r");
-           lista.toString();
-           System.out.println("Empiezan por al");
-           lista.empiezanPor("aL");
+    	  
+           System.out.println("El nombre más largo es" + "\n" + lista.nombreMasLargo());
+           lista.borrarLetra('r');
+           System.out.println("Después de los que empiezan por r" + lista.toString());
+           System.out.println("Empiezan por al" + " " + lista.empiezanPor("aL"));
            System.out.println("Empiezan por a");
-           lista.empiezanPor("a");
+           System.out.println(lista.empiezanPorLetra( 'a'));
     }
 }
