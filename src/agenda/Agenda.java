@@ -9,18 +9,18 @@ import java.util.TreeSet;
 
 public class Agenda {
 	private List<String> notas;
-	private Set<String> asignaturas;
+	private Set<Asignatura> asignaturas;
 	
 /*** Constructor*/
 public Agenda(){
 	notas = new ArrayList<String>();
-	asignaturas = new TreeSet<String>();
+	asignaturas = new TreeSet<Asignatura>();
 }
 	public void añadirNota(String nota){
 		notas.add(nota);
 		}
 	
-	public void añadirAsignatura(String asignatura) {
+	public void añadirAsignatura(Asignatura asignatura) {
 		asignaturas.add(asignatura);
 	}
 	
@@ -43,7 +43,7 @@ public Agenda(){
 	
 	
 	public void mostrarAsignatura() {
-		for(String a : asignaturas) {
+		for(Asignatura a : asignaturas) {
 			System.out.println(a);
 		}
 	}
