@@ -1,16 +1,18 @@
 package generadorIp;
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 
 
 
-
-class Test {
+class TestIP {
 
 	private GeneradorIP prueba;
 
+	@Test
 	void testGenerarNumero() {
 		this.prueba = new GeneradorIP();
 		boolean correcto = true;
@@ -19,22 +21,21 @@ class Test {
 				correcto = false;
 			}
 		}
-		assertEquals(correcto, false, "Error");
+		assertEquals(correcto, true, "Error");
 	}
 	
 	
 
-
+	@Test
 	void testGeneraIp() {
 		this.prueba = new GeneradorIP();
 	boolean resultado = false;
 	
 	String texto = this.prueba.generarCadena();
-	for(int i = 0; i < 4000; i++) {
-	if(texto.charAt(0) == 0 || texto.charAt(texto.length() - 1) == 0) {
+	if(texto.charAt(0) == 0 || texto.charAt(texto.length() - 1) == 0 && texto.charAt(texto.length() - 2) == '.') {
 		resultado = true;
 	}
-	}
+	
 	assertEquals(resultado, false, "Error con primer o ultimo digito");
 	}
 }
