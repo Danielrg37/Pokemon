@@ -1,6 +1,10 @@
 package generadorIp;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.Test;
 
@@ -12,7 +16,7 @@ class GeneradorIpTest {
 
 	private GeneradorIP prueba;
 
-	@Test
+	@org.junit.jupiter.api.Test
 	void testGenerarNumero() {
 		boolean error = false;
 		boolean comprobar = true;
