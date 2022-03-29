@@ -4,10 +4,8 @@ package generadorIp;
 public class GeneradorIP{
 	
 	
-	
-	private int min;
-	private int max;
-	
+
+
 	
 
 	
@@ -17,17 +15,16 @@ public class GeneradorIP{
 	}
 	
 
-	@Override
-	public String toString() {
+	public String generarCadena() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("GeneradorIP [min=");
-		builder.append(generarNumero(min, max));
+		builder.append(generarNumero(0, 254));
 		builder.append(".");
-		builder.append(generarNumero(min, max));
+		builder.append(generarNumero(0, 254));
 		builder.append(".");
-		builder.append(generarNumero(min, max));
+		builder.append(generarNumero(0, 254));
 		builder.append(".");
-		builder.append(generarNumero(min, max));
+		builder.append(generarNumero(0, 254));
 		
 		return builder.toString();
 	}
