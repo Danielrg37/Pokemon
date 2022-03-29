@@ -12,7 +12,7 @@ import org.junit.Test;
 
 
 
-class GeneradorIpTest {
+class Test {
 
 	private GeneradorIP prueba;
 
