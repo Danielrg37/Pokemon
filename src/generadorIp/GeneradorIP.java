@@ -10,7 +10,7 @@ public class GeneradorIP{
 
 	
 	public int generarNumero(int min, int max) {
-		int numero = (int)(Math.random()*(max-min+1)+min);
+		int numero = (int)(Math.random()* max + min);
 		return numero;
 	}
 	
