@@ -21,6 +21,7 @@ public AgendaV2(){
 	public int getNumeroEstudiantes() {
 		return estudiantes.size();
 	}
+	
 	public Collection<String> getNombresEstudiantes() {
 		return estudiantes.values();
 		}

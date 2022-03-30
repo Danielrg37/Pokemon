@@ -12,24 +12,22 @@ class TestIP {
 		this.prueba = new GeneradorIP();
 		boolean correcto = true;
 		for(int i = 0; i <= 1000; i++) {
-			if(this.prueba.generarNumero(0, 254) > 255) {
-				correcto = false;
+			int actual = this.prueba.generarNumero(0, 254);
+			assertTrue(actual >= 0 && actual <= 254);
 			}
 		}
-		assertEquals(correcto, true, "Error");
-	}
+		
+
 	
 	@Test
 	void testGeneraIp() {
 	this.prueba = new GeneradorIP();
-	boolean resultado = false;
 	
 	String texto = this.prueba.generarCadena();
-	if(texto.charAt(0) == 0 || texto.charAt(texto.length() - 1) == 0 && texto.charAt(texto.length() - 2) == '.') {
-		resultado = true;
-	}
+	String[] numeros = texto.split("\\.");
 	
-	assertEquals(resultado, false, "Error con primer o ultimo digito");
+	assertFalse(numeros[0].equals("0")); 
+	assertFalse(numeros[numeros.length -1].equals("0"));
 	}
 	
 }
