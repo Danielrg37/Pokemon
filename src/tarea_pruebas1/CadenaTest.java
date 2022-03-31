@@ -19,7 +19,7 @@ class CadenaTest {
 	
 	@Test
 	void testvocales() {
-		this.tarea = new Cadena();
+		
 		int expected = 2;
 		int actual = this.tarea.vocales("Clase");
 		assertEquals(expected, actual, "Error");

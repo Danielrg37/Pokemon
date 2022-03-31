@@ -19,7 +19,7 @@ Vector<Producto> productos;
 	public float totalFactura() {
 		float total = 0;
 		for(Producto p : productos) {
-			total += p.getPrecio();
+			total += p.getPrecio() * p.getCantidad();
 		}
 		return total;
 	}
