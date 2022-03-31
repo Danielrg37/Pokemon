@@ -1,4 +1,4 @@
-package factura_test;
+package factura;
 
 import static org.junit.jupiter.api.Assertions.*;
 

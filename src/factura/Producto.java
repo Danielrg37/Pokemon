@@ -1,4 +1,4 @@
-package factura_test;
+package factura;
 
 public class Producto {
 String nombre;
