@@ -13,6 +13,7 @@ public class Banco{
 	}
 	
 	public void addCuenta(String nombre, Cuenta cuenta) {
+		
 		cuentasBancarias.put(nombre, cuenta);
 	}
 	
@@ -57,6 +58,15 @@ public class Banco{
 			resultado.append("\n");
 		}
 		return resultado.toString();
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Banco [cuentasBancarias=");
+		builder.append(cuentasBancarias);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 }
