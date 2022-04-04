@@ -73,6 +73,7 @@ public String relacionLibros() {
 	for(Libro l : libros) {
 		resultado.append(l);
 	}
+	
 return resultado.toString();
 }
 
