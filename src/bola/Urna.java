@@ -40,8 +40,8 @@ public int cuantasBlancas() {
 
 public int cuantasNegras() {
 	int contador = 0;
-	for(Bola u : bolas) {
-		if(u.getColor() == Color.NEGRO) {
+	for(int i = 0; i < bolas.size(); i++) {
+		if(bolas.get(i).getColor() == Color.NEGRO){
 			contador++;
 		}
 	}
@@ -49,16 +49,18 @@ public int cuantasNegras() {
 }
 
 public void mostrarUrna() {
-	
+StringBuilder resultado = new StringBuilder();
+resultado.append("Urna:" + "\n");
 Iterator<Bola> it = bolas.iterator();
 	
 	while(it.hasNext()) {
-		Bola b = it.next();
-		if(b.getColor() == Color.BLANCO) {
-			it.remove();
+		resultado.append(it.next().toString() + "\n");
+		
 		}
+	
+	System.out.println(resultado.toString());
 	}
-}
+
 
 
 public void borrarBlancas() {
