@@ -1,11 +1,19 @@
+package aeropuerto2_lapesadilla;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Aeropuerto {
 
-	private  vuelos;
+	private Map<String, Vuelo> vuelos;
 
 	public Aeropuerto() {
-		vuelos = ;
+		vuelos = new HashMap<String, Vuelo>();
 	}
 
 	/**
@@ -14,7 +22,16 @@ public class Aeropuerto {
 	 * aerolinea como el vuelo.
 	 */
 	public void addVuelo(String aerolinea, Vuelo vuelo) {
+		Set<String> conjuntoAerolineas = vuelos.keySet();
+		Iterator<String> it = con
+		if(vuelos.containsKey(aerolinea)) {
+			
+		} else {
+			vuelos.put(aerolinea, vuelo);
+		}
 
+		
+	
 	}
 
 	/**
@@ -22,8 +39,12 @@ public class Aeropuerto {
 	 * como vuelos estaran ordenados alfabeticamente (Ver resultados de ejecucion)
 	 */
 	public void ordenAerolineasAlfabetico() {
-
-	}
+		TreeSet<Vuelo> ordenarVuelos = new TreeSet<Vuelo>();
+		TreeSet<String> ordenarAerolineas = new TreeSet<String>();
+		
+			
+		}
+	
 
 	/**
 	 * Muestra los vuelos regulares de la aerolinea pasada por parametro, se
@@ -33,7 +54,13 @@ public class Aeropuerto {
 	 *            Aerolinea de la que se imprimiran los vuelos regulares
 	 */
 	public void regularPorPlazas(String aerolinea) {
-
+		Set<Entry<String, Vuelo>> vuelos = this.vuelos.entrySet();
+		
+		for(Entry<String, Vuelo> e : vuelos) {
+			if(e instanceof Regular) {
+				
+			}
+		}
 	}
 
 	/**
@@ -41,8 +68,18 @@ public class Aeropuerto {
 	 * 
 	 * @return aerolina Aerolina del avion charter con más capacidad
 	 */
-	public List<Vuelo> plazasLibres() {
-
+	public String plazasLibres() {
+		StringBuilder resultado = new StringBuilder();
+		Set<Entry<String, Vuelo>> entradas = this.vuelos.entrySet();
+		
+		for(Entry<String, Vuelo> e : entradas) {
+			if(e instanceof Regular) {
+				if(((Regular) e).getPlazaslibres() >= 1) {
+					resultado.append(e);
+				}
+			}
+		}
+		return resultado.toString();
 	}
 
 	/**
@@ -53,7 +90,11 @@ public class Aeropuerto {
 	 *            Destino del que se debe sacar la estadistica
 	 */
 	public void estadisticaDestino(String destino) {
-
+		Set<Entry<String, Vuelo>> entradas = this.vuelos.entrySet();
+		
+		for(Entry<String, Vuelo> e : entradas) {
+			
+		}
 	}
 
 	/**
@@ -64,7 +105,10 @@ public class Aeropuerto {
 	 * @return numero de vuelos borrados
 	 */
 	public int borrarVuelosEmpresa(String nifEmpresa) {
-
+		int borrados = 0;
+	
+		vuelos.remove(nifEmpresa);
+		return 0;
 	}
 
 	/**
@@ -76,11 +120,13 @@ public class Aeropuerto {
 
 	}
 
-	/**
-	 * Represetación textual del mapa tal y como se muestra en el enunciado
-	 */
+	@Override
 	public String toString() {
-
+		StringBuilder builder = new StringBuilder();
+		builder.append("Aeropuerto [vuelos=");
+		builder.append(vuelos);
+		builder.append("]");
+		return builder.toString();
 	}
 
 	/**
