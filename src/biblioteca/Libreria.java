@@ -5,9 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 
 
-
-
-
 public class Libreria {
 	List<Libro> libros;
 	private String nombre;
@@ -33,14 +30,14 @@ public void anadirLibro(Libro l) {
 
 public String buscarLibro(String titulo) {
 	Iterator<Libro> it = libros.iterator();
-	String resultado = null;
+	StringBuilder resultado = new StringBuilder();
 	while(it.hasNext()) {
 		Libro i = it.next();
 		if(i.getTitulo().equals(titulo)) {
-		resultado = titulo;
+		resultado.append(titulo);
 		}
 	}
-	return resultado;
+	return resultado.toString();
 }
 
 
@@ -58,11 +55,12 @@ public boolean buscarAutor(String autor) {
 }
 
 public void borrarLibro(String autor) {
-	Iterator<Libro> it = libros.iterator();
-	while(it.hasNext()) {
-		Libro i = it.next();
-		if(i.getAutor().equals(autor)) {
-			libros.remove(i);
+	int i = 0;
+	while(i < libros.size()) {
+		if(libros.get(i).getAutor().equals(autor)) {
+			i--;
+		} else {
+			i++;
 		}
 		
 	}
