@@ -34,14 +34,27 @@ public class Libro {
 		return estadoLibro;
 	}
 
-	public void prestar() {
-		this.estadoLibro = Estado.PRESTADO;
-		this.fechaPrestamo = obtenerFechaPrestamo();
+	public void prestar() throws Exception {
+		
+		if(this.estadoLibro.equals(Estado.PRESTADO)) {
+			throw new Exception("El libro ya se encuentra prestado xd");
+		} else {
+			this.estadoLibro = Estado.PRESTADO;
+			this.fechaPrestamo = obtenerFechaPrestamo();
+			
+		}
 		
 	}
 	
-	public void devolver() {
-		this.estadoLibro = Estado.NOPRESTADO;
+	public void devolver() throws Exception {
+		if(this.estadoLibro.equals(Estado.NOPRESTADO)) {
+			throw new Exception("El libro no está prestado");
+		} else {
+			this.estadoLibro = Estado.NOPRESTADO;
+			this.fechaPrestamo = obtenerFechaPrestamo();
+			
+		}
+		
 	}
 	
 	public boolean estaPrestado() {

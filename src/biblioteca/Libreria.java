@@ -10,8 +10,8 @@ public class Libreria {
 	private String nombre;
 	
 	
-public Libreria() {
-	libros = new ArrayList<Libro>();
+public Libreria(int tamañoLibros) {
+	libros = new ArrayList<Libro>(tamañoLibros);
 }
 
 public String getNombre() {
@@ -28,16 +28,18 @@ public void anadirLibro(Libro l) {
 }
 
 
-public String buscarLibro(String titulo) {
+public Libro buscarLibro(String titulo) {
+	Libro auxiliar = null;
+	
 	Iterator<Libro> it = libros.iterator();
-	StringBuilder resultado = new StringBuilder();
 	while(it.hasNext()) {
 		Libro i = it.next();
 		if(i.getTitulo().equals(titulo)) {
-		resultado.append(titulo);
+		auxiliar = i;
 		}
 	}
-	return resultado.toString();
+	return auxiliar;
+	
 }
 
 
@@ -75,7 +77,7 @@ public String relacionLibros() {
 return resultado.toString();
 }
 
-public String prestarDeterminado(String titulo) {
+public String prestarDeterminado(String titulo) throws Exception {
 	StringBuilder resultado = new StringBuilder();
 	if(buscarLibro(titulo).equals(null)) {
 		resultado.append("nO tA");
@@ -92,6 +94,10 @@ public String prestarDeterminado(String titulo) {
 	return resultado.toString();
 
 }
+
+
+
+
 }
 
 	
