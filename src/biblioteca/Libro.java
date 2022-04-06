@@ -69,23 +69,23 @@ public class Libro {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Libro [titulo=");
-		builder.append(titulo);
-		builder.append(", autor=");
-		builder.append(autor);
-		builder.append(", numPaginas=");
-		builder.append(numPaginas);
-		builder.append(", estadoLibro=");
-		builder.append(estadoLibro);
-		builder.append(", fecha=");
+		builder.append("Titulo=");
+		builder.append(titulo + "\n");
+		builder.append("Autor=");
+		builder.append(autor + "\n");
+		builder.append("Num de Paginas=");
+		builder.append(numPaginas + "\n");
+		builder.append("EstadoLibro=");
+		builder.append(estadoLibro + "\n");
+		builder.append("Fecha=");
 		builder.append(obtenerFechaPrestamo());
-		builder.append("]");
+		builder.append("\n");
 		return builder.toString();
 	}
 
 	public String obtenerFechaPrestamo() {
 		LocalDate fecha = LocalDate.now();
-		 DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy MM dd");
+		 DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		  String f = fecha.format(formateador);
 		return f;
 	}

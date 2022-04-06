@@ -10,8 +10,9 @@ public class Libreria {
 	private String nombre;
 	
 	
-public Libreria(int tamañoLibros) {
+public Libreria(int tamañoLibros, String nombre) {
 	libros = new ArrayList<Libro>(tamañoLibros);
+	this.nombre = nombre;
 }
 
 public String getNombre() {
@@ -30,7 +31,6 @@ public void anadirLibro(Libro l) {
 
 public Libro buscarLibro(String titulo) {
 	Libro auxiliar = null;
-	
 	Iterator<Libro> it = libros.iterator();
 	while(it.hasNext()) {
 		Libro i = it.next();
@@ -59,7 +59,12 @@ public boolean buscarAutor(String autor) {
 public void borrarLibro(String autor) {
 	int i = 0;
 	while(i < libros.size()) {
+		
 		if(libros.get(i).getAutor().equals(autor)) {
+			libros.remove(i);
+			if(i == 0) {
+				break;
+			}
 			i--;
 		} else {
 			i++;
@@ -71,10 +76,12 @@ public void borrarLibro(String autor) {
 public String relacionLibros() {
 	StringBuilder resultado = new StringBuilder();
 	for(Libro l : libros) {
-		resultado.append(l);
+		resultado.append(l.toString());
+		resultado.append("\n");
 	}
 	
 return resultado.toString();
+
 }
 
 public String prestarDeterminado(String titulo) throws Exception {
