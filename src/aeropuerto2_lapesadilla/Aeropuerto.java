@@ -77,7 +77,7 @@ public class Aeropuerto {
 		for(String a : vuelos.keySet()) {
 			ArrayList<Vuelo> ordenarVuelos= vuelos.get(aerolinea);
 			for(Vuelo v : ordenarVuelos) {
-				
+				if(v instanceof Regular)
 			}
 		}
 			
