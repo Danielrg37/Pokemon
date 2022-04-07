@@ -2,20 +2,21 @@ package aeropuerto2_lapesadilla;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
+
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class Aeropuerto {
 
-	private TreeMap<String, ArrayList<Vuelo>> vuelos;
+public class Aeropuerto {
+private Map<String, ArrayList<Vuelo>> Vuelos;
 
 
 	public Aeropuerto() {
-		vuelos = new TreeMap<>();
+	Vuelos = new TreeMap<>();
 	
 	}
 
@@ -25,9 +26,9 @@ public class Aeropuerto {
 	 * aerolinea como el vuelo.
 	 */
 	public void addVuelo(String aerolinea, Vuelo vuelo) {
-		for(String a : vuelos.keySet()) {
+		for(String a : Vuelos.keySet()) {
 			if(a.equals(aerolinea)) {
-			vuelos.get(a).add(vuelo);			
+			Vuelos.get(a).add(vuelo);			
 			}
 		}
 			
@@ -35,7 +36,7 @@ public class Aeropuerto {
 		
 		ArrayList<Vuelo> tmp2 = new ArrayList<Vuelo>();
 		tmp2.add(vuelo);
-		vuelos.put(aerolinea, tmp2);
+		Vuelos.put(aerolinea, tmp2);
 	}
 
 
@@ -44,18 +45,8 @@ public class Aeropuerto {
 	 * como vuelos estaran ordenados alfabeticamente (Ver resultados de ejecucion)
 	 */
 	public void ordenAerolineasAlfabetico() {
-		ArrayList<String> aerolineas = new ArrayList<String>();
-		
-		Set<Entry<String, ArrayList<Vuelo>>> entradas = this.vuelos.entrySet();
-		
-		for(Entry<String, ArrayList<Vuelo>> e : entradas){
-			aerolineas.add(e.getKey());
-		}
-		
-		Collections.sort(aerolineas);
-		System.out.println(aerolineas);
-		
-		}
+	System.out.println(Vuelos);
+	}
 	
 
 	/**
@@ -66,34 +57,16 @@ public class Aeropuerto {
 	 *            Aerolinea de la que se imprimiran los vuelos regulares
 	 */
 	public void regularPorPlazas(String aerolinea) {
-		
-	List<Vuelo> tmp  = null;
-		List<Regular> regulares = new ArrayList<Regular>();
-		
-		Set<Entry<String, ArrayList<Vuelo>>> entradas = this.vuelos.entrySet();
+	
+		Set<Entry<String, ArrayList<Vuelo>>> entradas = this.Vuelos.entrySet();
 
 		for(Entry<String, ArrayList<Vuelo>> e : entradas){
-			if(e.getKey().equals(aerolinea)) {
-			tmp = e.getValue();
+			for(Vuelo v : e.getValue()) {
+			if(v instanceof Regular) {
+				System.out.println(e.getValue());
 			}
-		}
-			Iterator<Vuelo> it = tmp.iterator();
-			while(it.hasNext()) {
-				if(it.next() instanceof Regular) {
-					regulares.add((Regular) it.next());
-				}
 			}
-	
-				
-			Collections.sort(regulares, new ComparadorPlazas());
-			Collections.reverse(regulares);
-			for(Regular r : regulares) System.out.println(r.toString());
-			
-			
-			
-			
-		
-				
+		}	
 	}
 			
 
@@ -103,13 +76,26 @@ public class Aeropuerto {
 	 * @return aerolina Aerolina del avion charter con más capacidad
 	 */
 	public List<Vuelo> plazasLibres() {
-	Set<Entry<String, ArrayList<Vuelo>>> entradas = this.vuelos.entrySet();
-	List<Regular> regulares = new ArrayList<Regular>();
-	for(Entry<String, ArrayList<Vuelo>> e : entradas) {
+		List<Vuelo> regulares = new ArrayList<Vuelo>();
 		
-	}
-	return null;
-		}
+		Set<Entry<String, ArrayList<Vuelo>>> entradas = this.Vuelos.entrySet();
+
+		for(Entry<String, ArrayList<Vuelo>> e : entradas){
+			for(Vuelo v : e.getValue()) {
+				if(v instanceof Regular && ((Regular) v).getPlazaslibres() >= 1) {
+					regulares.add((Regular) v);
+				}
+			}
+			}
+		
+		
+		
+			Collections.sort(regulares, new ComparadorPlazas());
+			Collections.reverse(regulares);
+			return regulares;
+				
+}
+		
 	
 
 	
@@ -122,12 +108,10 @@ public class Aeropuerto {
 	 *            Destino del que se debe sacar la estadistica
 	 */
 	public void estadisticaDestino(String destino) {
-	Set<Entry<String, ArrayList<Vuelo>>> entradas = this.vuelos.entrySet();
-	ArrayList<Vuelo> tmp = new ArrayList<Vuelo>();
+	Set<Entry<String, ArrayList<Vuelo>>> entradas = this.Vuelos.entrySet();
 	int contador = 0;
 	for(Entry<String, ArrayList<Vuelo>> e : entradas) {
-		tmp.addAll(e.getValue());
-		for(Vuelo v : tmp) {
+		for(Vuelo v : e.getValue()) {
 			if(v.getDestino().equals(destino)) {
 				contador++;
 			}
@@ -144,11 +128,13 @@ public class Aeropuerto {
 	 * @return numero de vuelos borrados
 	 */
 	public int borrarVuelosEmpresa(String nifEmpresa) {
-		int borrados = 0;
-	
-		vuelos.remove(nifEmpresa);
-		return borrados;
-	}
+		Set<Entry<String, ArrayList<Vuelo>>> entradas = this.Vuelos.entrySet();
+		for(Entry<String, ArrayList<Vuelo>> e : entradas) {
+			
+			}
+		return 0;
+		}
+
 
 	/**
 	 * Imprime la lista de vuelos pasada por parametro
@@ -156,12 +142,10 @@ public class Aeropuerto {
 	 * @param listaVuelos
 	 */
 	public void imprimirListaVuelos(List<Vuelo> listaVuelos) {
-		StringBuilder resultado = new StringBuilder();
-		for(Vuelo v : listaVuelos) {
-			resultado.append(v);
-			resultado.append("\n");
+		for(Vuelo i : listaVuelos) {
+			System.out.println(i.toString());
 		}
-	} 
+	}
 	
 
 	/**
