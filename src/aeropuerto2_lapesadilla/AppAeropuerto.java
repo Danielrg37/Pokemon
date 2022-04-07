@@ -1,3 +1,5 @@
+package aeropuerto2_lapesadilla;
+
 public class AppAeropuerto {
 
 	public static void main(String[] args) {
