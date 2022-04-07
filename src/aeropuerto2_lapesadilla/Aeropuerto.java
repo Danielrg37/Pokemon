@@ -2,20 +2,12 @@ package aeropuerto2_lapesadilla;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.TreeSet;
-
-import pkgaeropuerto.modelo.Aerolinea;
-import pkgaeropuerto.modelo.Charter;
-import pkgaeropuerto.modelo.Regular;
-import pkgaeropuerto.modelo.Vuelo;
 
 public class Aeropuerto {
 
@@ -85,14 +77,15 @@ public class Aeropuerto {
 			tmp = e.getValue();
 			}
 		}
-			for(Vuelo a : tmp) {
-				if(a instanceof Regular) {
-					regulares.add(a);
+			Iterator<Vuelo> it = tmp.iterator();
+			while(it.hasNext()) {
+				if(it.next() instanceof Regular) {
+					regulares.add((Regular) it.next());
 				}
 			}
+	
 				
-				
-				Collections.sort(regulares, new ComparadorPlazas());
+			Collections.sort(regulares, new ComparadorPlazas());
 			Collections.reverse(regulares);
 			for(Regular r : regulares) System.out.println(r.toString());
 			
