@@ -5,8 +5,8 @@ public class Charter extends Vuelo {
 	private String nif;
 
 	
-	public Charter(String destino, String modelo, int numplazas, double precio, String nif) {
-		super(destino, modelo, numplazas, precio);
+	public Charter(String destino, String modelo, int numplazas, String nif) {
+		super(destino, modelo, numplazas);
 		this.nif = nif;
 	}
 
@@ -31,14 +31,7 @@ public String toString() {
 	return "\nVuelo Charter" + super.toString() + "\nNif Empresa: " + nif + "\n";
 }
 
-@Override
-public double calcularPrecioFinal() {
-	if(getNumplazas() < 200) {
-		return getPrecio() * 1.25 + 50;
-	} else {
-		return getPrecio() * 1.25;
-	}
-}
+
 }
 
 

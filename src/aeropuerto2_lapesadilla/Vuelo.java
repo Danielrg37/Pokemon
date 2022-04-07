@@ -6,14 +6,13 @@ public abstract class Vuelo implements Comparable<Vuelo> {
 	private String destino;
 	private String modelo;
 	private int numplazas;
-	private double precio;
+
 	
 	
-	public Vuelo(String destino, String modelo, int numplazas, double precio) {
+	public Vuelo(String destino, String modelo, int numplazas) {
 		this.destino = destino;
 		this.modelo = modelo;
 		this.numplazas = numplazas;
-		this.setPrecio(precio);
 	}
 
 
@@ -88,28 +87,12 @@ public abstract class Vuelo implements Comparable<Vuelo> {
 	
 	@Override
 	public String toString() {
-		return "\n-----------------\n\nDestino " + destino + "\nAvion:" + modelo + "\nPlazas:" + numplazas + "\n" + "\nPrecio billete: " + String.format("%.2f", this.calcularPrecioFinal()) + "€";
+		return "\n-----------------\n\nDestino " + destino + "\nAvion:" + modelo + "\nPlazas:" + numplazas + "\n";
 	}
 
 	
 	public int getNumeroPasajeros() {
 		return numplazas;
-	}
-
-
-
-	public double getPrecio() {
-		return precio;
-	}
-
-
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
-	public double calcularPrecioFinal() {
-		return precio;
 	}
 }
 

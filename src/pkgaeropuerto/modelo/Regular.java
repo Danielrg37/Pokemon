@@ -4,8 +4,8 @@ package pkgaeropuerto.modelo;
 public class Regular extends Vuelo {
 	private int plazaslibres;
 	
-	public Regular(String destino, String modelo, int numplazas, double precio, int plazaslibres) {
-		super(destino, modelo, numplazas, precio);
+	public Regular(String destino, String modelo, int numplazas, int plazasLibres2) {
+		super(destino, modelo, numplazas);
 		this.plazaslibres = plazaslibres;
 	}
 
@@ -37,10 +37,7 @@ public int getNumeroPasajeros() {
 	return getNumplazas() - plazaslibres;
 }
 
-@Override
-public double calcularPrecioFinal() {
-	return getPrecio() * 1.1 + 5 * plazaslibres;
-}
+
 }
 
 

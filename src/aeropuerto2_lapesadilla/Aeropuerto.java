@@ -13,6 +13,8 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 import pkgaeropuerto.modelo.Aerolinea;
+import pkgaeropuerto.modelo.Charter;
+import pkgaeropuerto.modelo.Regular;
 import pkgaeropuerto.modelo.Vuelo;
 
 public class Aeropuerto {
@@ -31,8 +33,6 @@ public class Aeropuerto {
 	 * aerolinea como el vuelo.
 	 */
 	public void addVuelo(String aerolinea, Vuelo vuelo) {
-		int contador = 0;
-		ArrayList<Vuelo> tmp1 = new ArrayList<Vuelo>();
 		for(String a : vuelos.keySet()) {
 			if(a.equals(aerolinea)) {
 			vuelos.get(a).add(vuelo);			
@@ -74,16 +74,35 @@ public class Aeropuerto {
 	 *            Aerolinea de la que se imprimiran los vuelos regulares
 	 */
 	public void regularPorPlazas(String aerolinea) {
-		for(String a : vuelos.keySet()) {
-			ArrayList<Vuelo> ordenarVuelos= vuelos.get(aerolinea);
-			for(Vuelo v : ordenarVuelos) {
-				if(v instanceof Regular)
+		
+	List<Vuelo> tmp  = null;
+		List<Regular> regulares = new ArrayList<Regular>();
+		
+		Set<Entry<String, ArrayList<Vuelo>>> entradas = this.vuelos.entrySet();
+
+		for(Entry<String, ArrayList<Vuelo>> e : entradas){
+			if(e.getKey().equals(aerolinea)) {
+			tmp = e.getValue();
 			}
 		}
+			for(Vuelo a : tmp) {
+				if(a instanceof Regular) {
+					regulares.add(a);
+				}
+			}
+				
+				
+				Collections.sort(regulares, new ComparadorPlazas());
+			Collections.reverse(regulares);
+			for(Regular r : regulares) System.out.println(r.toString());
 			
-		}
-
+			
+			
+			
+		
+				
 	}
+			
 
 	/**
 	 * Devuelve una lista con vuelos regulares con plazas libres
@@ -92,8 +111,11 @@ public class Aeropuerto {
 	 */
 	public List<Vuelo> plazasLibres() {
 	Set<Entry<String, ArrayList<Vuelo>>> entradas = this.vuelos.entrySet();
-
+	List<Regular> regulares = new ArrayList<Regular>();
 	for(Entry<String, ArrayList<Vuelo>> e : entradas) {
+		
+	}
+	return null;
 		}
 	
 
@@ -141,8 +163,10 @@ public class Aeropuerto {
 	 * @param listaVuelos
 	 */
 	public void imprimirListaVuelos(List<Vuelo> listaVuelos) {
+		StringBuilder resultado = new StringBuilder();
 		for(Vuelo v : listaVuelos) {
-			System.out.println(v);
+			resultado.append(v);
+			resultado.append("\n");
 		}
 	} 
 	
@@ -153,7 +177,7 @@ public class Aeropuerto {
 	public void leerFicheroCursos() {
 		Scanner entrada = null;
 		try {
-			entrada = new Scanner(this.getClass().getResourceAsStream("/aviones.txt"));
+			entrada = new Scanner(this.getClass().getResourceAsStream("aviones.txt"));
 			while (entrada.hasNextLine()) {
 				String linea = entrada.nextLine();
 				int pos = linea.indexOf(":");
@@ -162,8 +186,8 @@ public class Aeropuerto {
 				String destino = vuelo[1];
 				String avion = vuelo[2];
 				int plazas = Integer.parseInt(vuelo[3].trim());
+				int plazasLibres = Integer.parseInt(vuelo[4].trim());
 				if (vuelo[0].equals("R")) {
-					int plazasLibres = Integer.parseInt(vuelo[4].trim());
 					this.addVuelo(aerolinea, new Regular(destino, avion, plazas, plazasLibres));
 				}
 				else {
