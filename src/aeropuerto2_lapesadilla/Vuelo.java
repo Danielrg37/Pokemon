@@ -86,14 +86,9 @@ public abstract class Vuelo implements Comparable<Vuelo> {
 	}
 	
 	
+	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("\n\nVuelo " + this.getClass().getSimpleName());
-		sb.append("\n-------------------------");
-		sb.append("\n\nDestino: " + this.destino);
-		sb.append("\nAvion: " + this.modelo);
-		sb.append("\nPlazas: " + this.getNumplazas());
-		return sb.toString();
+		return "\n-----------------\n\nDestino " + destino + "\nAvion:" + modelo + "\nPlazas:" + numplazas + "\n";
 	}
 	
 	public int getNumeroPasajeros() {

@@ -26,17 +26,12 @@ public class Regular extends Vuelo {
 
 
 
+
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("\n\nVuelo " + this.getClass().getSimpleName());
-		sb.append("\n-------------------------");
-		sb.append("\n\nDestino: " + this.getDestino());
-		sb.append("\nAvion: " + this.getModelo());
-		sb.append("\nPlazas: " + this.getNumplazas());
-		sb.append("\nPlazas libres: " + this.getPlazaslibres()); 
-		return sb.toString();
+		return "\nVuelo Regular" + super.toString() + "\nPlazas Libres: " + plazaslibres + "\n";
 	}
+
 
 
 

@@ -47,8 +47,10 @@ private Map<String, ArrayList<Vuelo>> vuelos;
 	 * como vuelos estaran ordenados alfabeticamente (Ver resultados de ejecucion)
 	 */
 	public void ordenAerolineasAlfabetico() {
-		for(Entry<String, ArrayList<Vuelo>> entry : vuelos.entrySet()) {
-		    System.out.println(entry.getKey() + ": " +  entry.getValue().toString());
+		
+		for(String clave : vuelos.keySet()) {
+		System.out.println(vuelos.get(clave));
+
 		}
 		}
 
@@ -209,5 +211,4 @@ Set<Entry<String, ArrayList<Vuelo>>> entradas = this.vuelos.entrySet();
 		}
 
 	}
-
 }

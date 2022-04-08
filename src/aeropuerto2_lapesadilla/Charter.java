@@ -26,20 +26,13 @@ public void setNif(String nif) {
 }
 
 
+
 @Override
 public String toString() {
-	StringBuilder sb = new StringBuilder();
-	sb.append("\n\nVuelo " + this.getClass().getSimpleName());
-	sb.append("\n-------------------------");
-	sb.append("\n\nDestino: " + this.getDestino());
-	sb.append("\nAvion: " + this.getModelo());
-	sb.append("\nPlazas: " + this.getNumplazas());
-	sb.append("\nNIF Empresa: " + this.nif);
-	return sb.toString();
-}
+	return "\nVuelo Charter" + super.toString() + "\nNif Empresa: " + nif + "\n";
 }
 
-
+}
 
 
 
