@@ -34,7 +34,7 @@ public class Regular extends Vuelo {
 		sb.append("\n\nDestino: " + this.getDestino());
 		sb.append("\nAvion: " + this.getModelo());
 		sb.append("\nPlazas: " + this.getNumplazas());
-		sb.append("\nPlazas libres: " + this.plazaslibres); 
+		sb.append("\nPlazas libres: " + this.getPlazaslibres()); 
 		return sb.toString();
 	}
 

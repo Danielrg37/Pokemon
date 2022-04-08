@@ -2,21 +2,21 @@ package aeropuerto2_lapesadilla;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.TreeMap;
+import java.util.HashMap;
+import java.util.Iterator;
 
 
 public class Aeropuerto {
-private Map<String, ArrayList<Vuelo>> Vuelos;
+private Map<String, ArrayList<Vuelo>> vuelos;
 
 
 	public Aeropuerto() {
-	Vuelos = new TreeMap<>();
+	vuelos = new HashMap<>();
 	
 	}
 
@@ -26,27 +26,33 @@ private Map<String, ArrayList<Vuelo>> Vuelos;
 	 * aerolinea como el vuelo.
 	 */
 	public void addVuelo(String aerolinea, Vuelo vuelo) {
-		for(String a : Vuelos.keySet()) {
-			if(a.equals(aerolinea)) {
-			Vuelos.get(a).add(vuelo);			
-			}
-		}
-			
-			
 		
-		ArrayList<Vuelo> tmp2 = new ArrayList<Vuelo>();
-		tmp2.add(vuelo);
-		Vuelos.put(aerolinea, tmp2);
+		
+		for(String clave : vuelos.keySet()) {
+		if(clave.equals(aerolinea)) {
+			vuelos.get(clave).add(vuelo);
+		}
+		}
+		
+	Set<String> claves = vuelos.keySet();
+	if(!claves.contains(aerolinea)) {
+		ArrayList<Vuelo> nuevaLista = new ArrayList<Vuelo>();
+		nuevaLista.add(vuelo);
+		vuelos.put(aerolinea, nuevaLista);
 	}
-
+	}
 
 	/**
 	 * Imprime los vuelos por cada aerolinea ordenados por destino, tanto aerolineas
 	 * como vuelos estaran ordenados alfabeticamente (Ver resultados de ejecucion)
 	 */
 	public void ordenAerolineasAlfabetico() {
-	System.out.println(Vuelos);
-	}
+		for(Entry<String, ArrayList<Vuelo>> entry : vuelos.entrySet()) {
+		    System.out.println(entry.getKey() + ": " +  entry.getValue().toString());
+		}
+		}
+
+
 	
 
 	/**
@@ -58,17 +64,22 @@ private Map<String, ArrayList<Vuelo>> Vuelos;
 	 */
 	public void regularPorPlazas(String aerolinea) {
 	
-		Set<Entry<String, ArrayList<Vuelo>>> entradas = this.Vuelos.entrySet();
-
-		for(Entry<String, ArrayList<Vuelo>> e : entradas){
-			for(Vuelo v : e.getValue()) {
-			if(v instanceof Regular) {
-				System.out.println(e.getValue());
+		
+		List<Vuelo> regulares = new ArrayList<Vuelo>();
+		
+		for(String clave : vuelos.keySet()) {
+			if(clave.equals(aerolinea)) {
+				for(Vuelo v : vuelos.get(clave)) {
+					if(v instanceof Regular) {
+						regulares.add(v);
+					}
+				}
 			}
-			}
-		}	
+		}
+		Collections.sort(regulares, new ComparadorPlazas());
+		Collections.reverse(regulares);
+		System.out.println(regulares);
 	}
-			
 
 	/**
 	 * Devuelve una lista con vuelos regulares con plazas libres
@@ -78,20 +89,18 @@ private Map<String, ArrayList<Vuelo>> Vuelos;
 	public List<Vuelo> plazasLibres() {
 		List<Vuelo> regulares = new ArrayList<Vuelo>();
 		
-		Set<Entry<String, ArrayList<Vuelo>>> entradas = this.Vuelos.entrySet();
-
-		for(Entry<String, ArrayList<Vuelo>> e : entradas){
-			for(Vuelo v : e.getValue()) {
-				if(v instanceof Regular && ((Regular) v).getPlazaslibres() >= 1) {
-					regulares.add((Regular) v);
+		for(String clave : vuelos.keySet()) {
+			for(Vuelo v : vuelos.get(clave)) {
+				if(v instanceof Regular) {
+					if(((Regular) v).getPlazaslibres() >= 1) {
+						regulares.add(v);
+					}
 				}
 			}
-			}
+		}
 		
 		
-		
-			Collections.sort(regulares, new ComparadorPlazas());
-			Collections.reverse(regulares);
+			
 			return regulares;
 				
 }
@@ -108,16 +117,18 @@ private Map<String, ArrayList<Vuelo>> Vuelos;
 	 *            Destino del que se debe sacar la estadistica
 	 */
 	public void estadisticaDestino(String destino) {
-	Set<Entry<String, ArrayList<Vuelo>>> entradas = this.Vuelos.entrySet();
-	int contador = 0;
-	for(Entry<String, ArrayList<Vuelo>> e : entradas) {
-		for(Vuelo v : e.getValue()) {
+	
+	for(String clave : vuelos.keySet()) {
+		int contador = 0;
+		for(Vuelo v : vuelos.get(clave)) {
 			if(v.getDestino().equals(destino)) {
 				contador++;
 			}
 		}
-		System.out.printf("\nAerolinea %S cuenta con el %d número de vuelos al destino %S", e.getKey(), contador, destino);
-	}		
+	
+		
+		System.out.printf("\nAerolinea %S cuenta con el %d número de vuelos al destino %S", clave, contador, destino);
+	}
 	}
 
 	/**
@@ -128,13 +139,26 @@ private Map<String, ArrayList<Vuelo>> Vuelos;
 	 * @return numero de vuelos borrados
 	 */
 	public int borrarVuelosEmpresa(String nifEmpresa) {
-		Set<Entry<String, ArrayList<Vuelo>>> entradas = this.Vuelos.entrySet();
-		for(Entry<String, ArrayList<Vuelo>> e : entradas) {
+		int contador = 0;
+Set<Entry<String, ArrayList<Vuelo>>> entradas = this.vuelos.entrySet();
+		
+		for(Entry<String, ArrayList<Vuelo>> e : entradas){
+			ArrayList<Vuelo> tmp = e.getValue();
+			Iterator<Vuelo> it = tmp.iterator();
+			while(it.hasNext()) {
+				Vuelo v = it.next();
+				if(v instanceof Charter) {
+					if(((Charter) v).getNif().equals(nifEmpresa)) {
+					it.remove();
+					contador++;
+				}
 			
-			}
-		return 0;
+			vuelos.put(e.getKey(), tmp);
 		}
-
+		}
+		}
+		return contador;
+	}
 
 	/**
 	 * Imprime la lista de vuelos pasada por parametro

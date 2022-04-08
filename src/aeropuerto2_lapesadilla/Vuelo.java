@@ -92,7 +92,7 @@ public abstract class Vuelo implements Comparable<Vuelo> {
 		sb.append("\n-------------------------");
 		sb.append("\n\nDestino: " + this.destino);
 		sb.append("\nAvion: " + this.modelo);
-		sb.append("\nPlazas: " + this.numplazas);
+		sb.append("\nPlazas: " + this.getNumplazas());
 		return sb.toString();
 	}
 	
