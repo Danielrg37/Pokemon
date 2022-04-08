@@ -122,14 +122,16 @@ private Map<String, ArrayList<Vuelo>> vuelos;
 	
 	for(String clave : vuelos.keySet()) {
 		int contador = 0;
+		int contadorViajesTotal = 0;
 		for(Vuelo v : vuelos.get(clave)) {
+			
+			contadorViajesTotal++;
 			if(v.getDestino().equals(destino)) {
 				contador++;
 			}
 		}
 	
-		
-		System.out.printf("\nAerolinea %S cuenta con el %d número de vuelos al destino %S", clave, contador, destino);
+		System.out.printf("\nAerolinea %S cuenta con %d de %d número de vuelos al destino %S", clave, contador, contadorViajesTotal, destino);
 	}
 	}
 
