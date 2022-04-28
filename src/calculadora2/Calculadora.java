@@ -11,7 +11,7 @@ public class Calculadora {
 	private double total;
 	private static String numero1;
 	private static String numero2;
-	
+	private static String prueba = "SALIR";
 	
 	static boolean encendido = true;
 
@@ -28,6 +28,7 @@ public class Calculadora {
 		//Para que vuelva a pedir números al mostrar resultado, los paso a null a la hora de mostrar el resultado por pantalla
 		if(operando_1 == null && operando_2 == null) {
 		introducirNumeros();
+		//Linea 169
 		}
 		
 		//Menu de seleccionar opcion
@@ -84,17 +85,17 @@ public class Calculadora {
 		System.out.println("Chao");
 		encendido = false;
 		break;
-	}
-	
 		}
-	
-				
-		
+	}
 }
+			
+		
+
 
 	//Lee los operadores y los pasa a Double
 	public void leerOperandos(String num1, String num2) {
 		try {
+		
 			setOperando_1(Double.parseDouble(num1));
 
 			setOperando_2(Double.parseDouble(num2));
@@ -166,12 +167,21 @@ public class Calculadora {
 	
 	//Introduce los números, método llamado en el menú
 	public static void introducirNumeros() {
-		System.out.println("Introduce el primer operador");
-		numero1 = sc.next();
-
-		System.out.println("Introduce el segundo operador");
-		numero2 = sc.next();
 	
+		System.out.println("Introduce el primer operador o escribe SALIR para salir del menú");
+		
+		//Asi le permito salir del menú
+		if(sc.next().equals("SALIR") || sc.next().equals("salir")) {
+			System.out.println("Chao, amigo");
+			encendido = false;
+		}
+	
+		numero1 = sc.next();
+		
+		System.out.println("Introduce el segundo operador");
+		
+		numero2 = sc.next();
+		
 		calcu.leerOperandos(numero1, numero2);
 		if(calcu.getOperando_1() != null  && calcu.getOperando_2() != null) {
 		System.out.println("\n");
@@ -179,7 +189,8 @@ public class Calculadora {
 		}  else {
 			System.out.println("Error, vuelve a intentarlo.");
 		}
-}
+		}
+
 	
 	//Imprime resultado
 	public void mostrarResultado() {
