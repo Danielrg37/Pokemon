@@ -8,17 +8,14 @@ import java.util.Scanner;
 
 public class LectorArchivo {
 
-	private static boolean SALIR = false;
-	 public static final String SEPARATOR=",";
-	   public static final char QUOTE= '"';
-	   public static String linea = "";
-	static Scanner sc = new Scanner(System.in);
-	
-	public static void main(String[] args) throws IOException {
+	public static String linea = "";
+	public 	static Scanner sc = new Scanner(System.in);
+	public static String resultado = null;
+
+	public static void main(String[] args) throws Exception {
 		
 
 BufferedReader br = null;
-
 System.out.println("Introduce codigo postal:");
 String opcion = sc.next();
 
@@ -28,13 +25,14 @@ try {
 	br = new BufferedReader(new FileReader("restaurantes.csv"));
 while ((linea = br.readLine()) != null) {
 	if(linea.contains(opcion)) {
-		System.out.println(linea);
+		resultado = linea;
+		System.out.println(resultado);
 	}
 }
-	} catch (FileNotFoundException e) {
-	    e.printStackTrace();
-	} catch (IOException e) {
-	    e.printStackTrace();
+if(resultado == null) {
+	System.out.println("Este código postal no está en el fichero");
+}
+
 	} finally {
 	    if ( br != null)
 	        try {
