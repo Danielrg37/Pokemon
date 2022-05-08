@@ -27,19 +27,8 @@ String opcion = sc.next();
 try {
 	br = new BufferedReader(new FileReader("restaurantes.csv"));
 while ((linea = br.readLine()) != null) {
-	if(linea.indexOf(QUOTE) != -1) {
-		String [] datos = linea.split(SEPARATOR);
-	
-		System.out.println( datos[0] + ", " + datos[1] + ", " + datos[2] + ", " + datos[3] + ", " + datos[4] + ", " + datos[5]);
-		if(datos[5].equals(opcion)) {
-			br.close();
-		}
-	} else {
-		String [] datos = linea.split(SEPARATOR);
-		System.out.println( datos[0] + ", " + datos[1] + ", " + datos[2] + ", " + datos[3] + ", " + datos[4]);
-		if(datos[4].equals(opcion)) {
-			br.close();
-		}
+	if(linea.contains(opcion)) {
+		System.out.println(linea);
 	}
 }
 	} catch (FileNotFoundException e) {
