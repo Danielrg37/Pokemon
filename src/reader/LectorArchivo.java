@@ -18,7 +18,7 @@ public class LectorArchivo {
 BufferedReader br = null;
 System.out.println("Introduce codigo postal:");
 String opcion = sc.next();
-
+System.out.println("---------------------------");
 
 
 try {
