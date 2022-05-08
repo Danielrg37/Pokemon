@@ -1,4 +1,4 @@
-package reader;
+package lectorRestaurantes;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
