@@ -11,12 +11,14 @@ public class Principal {
 		
 	while (opcion != 5) {
 	System.out.println("-------------------");
-	System.out.println("Menu");
-	System.out.println("1");
-	System.out.println("2");
-	System.out.println("3");
+	System.out.println("Menu (Restaurantes V2)");
+	System.out.println("1- Añadir restaurante");
+	System.out.println("2- Listar restaurantes");
+	System.out.println("3 - Buscar por nombre");
 	System.out.println("4");
-	System.out.println("5");
+	System.out.println("5- Salir");
+	System.out.println("-------------------");
+	System.out.println("Introduce opción:");
 	opcion = sc.nextInt();
 	System.out.println("-------------------");
 	
@@ -34,11 +36,10 @@ public class Principal {
 		break;
 		
 	case 4:
-		
 		break;
 		
 	case 5:
-		System.out.println("Sales del programa, chao");
+		System.out.println("Seleccionaste salir, chao");
 		break;
 		
 	default:

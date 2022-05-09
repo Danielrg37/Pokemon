@@ -12,16 +12,19 @@ public class AnadirRestaurante {
 	
 	
 	public static void anadirRestaurante() throws IOException {
-	System.out.println("xd");
+	System.out.println("Introduce los datos (Pon comas entre ellos):");
 	String cadena = sc.nextLine();
 	
 	String[] datos = cadena.split(",");
 	
-	
-	
 	try {
 	PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("restaurantes.csv", true)));
-	pw.println(datos);
+	pw.write("\n");
+	pw.write(datos[0]);
+	for(int i = 1; i < datos.length; i++) {
+		pw.write( "," + datos[i]);
+	}
+	
 	pw.close();
 	} catch (IOException e) {
 		System.out.println("Error");
