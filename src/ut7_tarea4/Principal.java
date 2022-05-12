@@ -67,7 +67,7 @@ public class Principal {
 		BufferedReader br = null;
 		
 		try {
-			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("src/ut7_tarea4/out/out.txt")));
+			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("src/ut7_tarea4/out/" + nombre)));
 			br = new BufferedReader(new FileReader("src/ut7_tarea4/" + nombre));
 			while ((linea = br.readLine()) != null) {
 				if(linea.contains("/*") || linea.contains( "/**") || linea.contains("//") || linea.contains("*/") || linea.contains("*")){
