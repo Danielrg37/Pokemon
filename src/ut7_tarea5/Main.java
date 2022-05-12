@@ -26,7 +26,6 @@ public class Main {
 			palabras.addAll(Arrays.asList(cadena));
 			}
 			
-			
 			for(String c : palabras) {
 				if(mapa.containsKey(c)) {
 					mapa.put(c, mapa.get(c) + 1);
