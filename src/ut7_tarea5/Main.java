@@ -7,20 +7,23 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 
 public class Main {
 	private static String linea = " ";
 	private static String[] cadena;
-	
+	private HashMap<String, Integer> mapa = new HashMap<String, Integer>();
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader br = null;
 		try {
 		
-			br = new BufferedReader(new FileReader("src/ut7_tarea_5/psicopata.txt"));
+			br = new BufferedReader(new FileReader("psicopata.txt"));
 			while ((linea = br.readLine()) != null) {
-				cadena = linea.split(" ");
+			cadena = linea.split(" ");
+	
 			}
+			
 		} finally {
 
 		}
@@ -32,11 +35,7 @@ public class Main {
 			}
 	}
 
-	public static void mostrarPalabras() {
-	for(String c : cadena) {
-		System.out.println(c);
-	}
-	}
+	
 	
 	
 	
