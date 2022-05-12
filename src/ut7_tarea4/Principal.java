@@ -14,12 +14,9 @@ public class Principal {
 	private static int opcion = 0;
 	private static String nombre;
 	private static String linea = " ";
-	private static String Javadoc = "/**";
-	private static String Bloque = "/*";
-	private static String Linea = "//";
 
 	public static void main(String[] args) throws IOException {
-
+		
 		while (opcion != 2) {
 			System.out.println("Preprocesador de comentarios en Java");
 			System.out.println("-------------------");
@@ -40,7 +37,7 @@ public class Principal {
 				break;
 
 			default:
-
+				System.out.println("Error al introducir número");
 				break;
 			}
 		}
@@ -51,6 +48,7 @@ public class Principal {
 		File archivo = null;
 		System.out.println("Introduzca el nombre del fichero a tratar > ");
 		nombre = sc.nextLine();
+		
 		try {
 			archivo = new File("src/ut7_tarea4/" + nombre);
 		} catch (NullPointerException e) {
@@ -72,7 +70,7 @@ public class Principal {
 			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("src/ut7_tarea4/out/out.txt")));
 			br = new BufferedReader(new FileReader("src/ut7_tarea4/" + nombre));
 			while ((linea = br.readLine()) != null) {
-				if(linea.contains(Bloque) || linea.contains(Javadoc)  || linea.contains(Linea) || linea.contains("*/") || linea.contains("*")){
+				if(linea.contains("/*") || linea.contains( "/**") || linea.contains("//") || linea.contains("*/") || linea.contains("*")){
 				} else {
 				pw.write(linea);
 				}
