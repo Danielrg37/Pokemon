@@ -17,17 +17,18 @@ public class Main {
 		BufferedReader br = null;
 		try {
 		
-			br = new BufferedReader(new FileReader("psicopata.txt"));
-			ArrayList<String> palabraspsicopata = new ArrayList<>();
+			br = new BufferedReader(new FileReader("archivopsicopata.txt"));
+			ArrayList<String> palabras = new ArrayList<>();
+			
 			while ((linea = br.readLine()) != null) {
 			String lineaMinisculas = linea.toLowerCase();
 			cadena = lineaMinisculas.split( " ");
-			palabraspsicopata.addAll(Arrays.asList(cadena));
+			palabras.addAll(Arrays.asList(cadena));
 			
 			}
 			
 			
-			for(String c : palabraspsicopata) {
+			for(String c : palabras) {
 				if(mapa.containsKey(c)) {
 					mapa.put(c, mapa.get(c) + 1);
 				} else {
