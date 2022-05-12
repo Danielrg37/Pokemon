@@ -29,7 +29,7 @@ public class Principal {
 
 			switch (opcion) {
 			case 1:
-				eliminar();
+				comprobarFichero();
 				break;
 
 			case 2:
@@ -43,7 +43,7 @@ public class Principal {
 		}
 	}
 
-	public static void eliminar() throws IOException {
+	public static void comprobarFichero() throws IOException {
 		Scanner sc = new Scanner(System.in);
 		File archivo = null;
 		System.out.println("Introduzca el nombre del fichero a tratar > ");
