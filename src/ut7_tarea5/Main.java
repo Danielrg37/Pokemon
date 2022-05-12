@@ -1,29 +1,40 @@
 package ut7_tarea5;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.TreeMap;
 
 public class Main {
 	private static String linea = " ";
 	private static String[] cadena;
-	private HashMap<String, Integer> mapa = new HashMap<String, Integer>();
+	static TreeMap<String, Integer> mapa =  new TreeMap<String, Integer>(); 
+
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader br = null;
 		try {
 		
 			br = new BufferedReader(new FileReader("psicopata.txt"));
+			ArrayList<String> palabraspsicopata = new ArrayList<>();
 			while ((linea = br.readLine()) != null) {
-			cadena = linea.split(" ");
-	
+			String lineaMinisculas = linea.toLowerCase();
+			cadena = lineaMinisculas.split( " ");
+			palabraspsicopata.addAll(Arrays.asList(cadena));
+			
 			}
 			
+			
+			for(String c : palabraspsicopata) {
+				if(mapa.containsKey(c)) {
+					mapa.put(c, mapa.get(c) + 1);
+				} else {
+					mapa.put(c, 1);
+				}
+			}
+			imprimirMapa();
 		} finally {
 
 		}
@@ -34,6 +45,24 @@ public class Main {
 				e.printStackTrace();
 			}
 	}
+		
+		public static void imprimirMapa() {
+			int maximo = 0;
+			String palabraMax = null;
+		for(String x : mapa.keySet()) {
+			System.out.println(x + " " + mapa.get(x));
+			if(mapa.get(x) > maximo) {
+				palabraMax = x;
+				maximo = mapa.get(x);
+			}
+		}
+		System.out.println("Palabras con más ocurrencias:" + "  " + palabraMax + " " + maximo);
+		}
+		}
+
+				
+				
+	
 
 	
 	
@@ -59,5 +88,4 @@ public class Main {
 	
 	
 	
-	}
 
