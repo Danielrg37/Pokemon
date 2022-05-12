@@ -24,7 +24,6 @@ public class Main {
 			String lineaMinisculas = linea.toLowerCase();
 			cadena = lineaMinisculas.split( " ");
 			palabras.addAll(Arrays.asList(cadena));
-			
 			}
 			
 			
