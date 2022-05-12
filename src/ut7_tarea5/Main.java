@@ -21,8 +21,8 @@ public class Main {
 			ArrayList<String> palabras = new ArrayList<>();
 			
 			while ((linea = br.readLine()) != null) {
-			String lineaMinisculas = linea.toLowerCase();
-			cadena = lineaMinisculas.split( " ");
+			String lineaMinusculas = linea.toLowerCase();
+			cadena = lineaMinusculas.split(" ");
 			palabras.addAll(Arrays.asList(cadena));
 			}
 			
